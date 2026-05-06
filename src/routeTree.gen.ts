@@ -13,6 +13,7 @@ import { Route as ZakatRouteImport } from './routes/zakat'
 import { Route as TasbihRouteImport } from './routes/tasbih'
 import { Route as QuranRouteImport } from './routes/quran'
 import { Route as QiblaRouteImport } from './routes/qibla'
+import { Route as PrayerSettingsRouteImport } from './routes/prayer-settings'
 import { Route as PrayerRouteImport } from './routes/prayer'
 import { Route as MoreRouteImport } from './routes/more'
 import { Route as HijriRouteImport } from './routes/hijri'
@@ -39,6 +40,11 @@ const QuranRoute = QuranRouteImport.update({
 const QiblaRoute = QiblaRouteImport.update({
   id: '/qibla',
   path: '/qibla',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const PrayerSettingsRoute = PrayerSettingsRouteImport.update({
+  id: '/prayer-settings',
+  path: '/prayer-settings',
   getParentRoute: () => rootRouteImport,
 } as any)
 const PrayerRoute = PrayerRouteImport.update({
@@ -83,6 +89,7 @@ export interface FileRoutesByFullPath {
   '/hijri': typeof HijriRoute
   '/more': typeof MoreRoute
   '/prayer': typeof PrayerRoute
+  '/prayer-settings': typeof PrayerSettingsRoute
   '/qibla': typeof QiblaRoute
   '/quran': typeof QuranRouteWithChildren
   '/tasbih': typeof TasbihRoute
@@ -96,6 +103,7 @@ export interface FileRoutesByTo {
   '/hijri': typeof HijriRoute
   '/more': typeof MoreRoute
   '/prayer': typeof PrayerRoute
+  '/prayer-settings': typeof PrayerSettingsRoute
   '/qibla': typeof QiblaRoute
   '/quran': typeof QuranRouteWithChildren
   '/tasbih': typeof TasbihRoute
@@ -110,6 +118,7 @@ export interface FileRoutesById {
   '/hijri': typeof HijriRoute
   '/more': typeof MoreRoute
   '/prayer': typeof PrayerRoute
+  '/prayer-settings': typeof PrayerSettingsRoute
   '/qibla': typeof QiblaRoute
   '/quran': typeof QuranRouteWithChildren
   '/tasbih': typeof TasbihRoute
@@ -125,6 +134,7 @@ export interface FileRouteTypes {
     | '/hijri'
     | '/more'
     | '/prayer'
+    | '/prayer-settings'
     | '/qibla'
     | '/quran'
     | '/tasbih'
@@ -138,6 +148,7 @@ export interface FileRouteTypes {
     | '/hijri'
     | '/more'
     | '/prayer'
+    | '/prayer-settings'
     | '/qibla'
     | '/quran'
     | '/tasbih'
@@ -151,6 +162,7 @@ export interface FileRouteTypes {
     | '/hijri'
     | '/more'
     | '/prayer'
+    | '/prayer-settings'
     | '/qibla'
     | '/quran'
     | '/tasbih'
@@ -165,6 +177,7 @@ export interface RootRouteChildren {
   HijriRoute: typeof HijriRoute
   MoreRoute: typeof MoreRoute
   PrayerRoute: typeof PrayerRoute
+  PrayerSettingsRoute: typeof PrayerSettingsRoute
   QiblaRoute: typeof QiblaRoute
   QuranRoute: typeof QuranRouteWithChildren
   TasbihRoute: typeof TasbihRoute
@@ -199,6 +212,13 @@ declare module '@tanstack/react-router' {
       path: '/qibla'
       fullPath: '/qibla'
       preLoaderRoute: typeof QiblaRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/prayer-settings': {
+      id: '/prayer-settings'
+      path: '/prayer-settings'
+      fullPath: '/prayer-settings'
+      preLoaderRoute: typeof PrayerSettingsRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/prayer': {
@@ -279,6 +299,7 @@ const rootRouteChildren: RootRouteChildren = {
   HijriRoute: HijriRoute,
   MoreRoute: MoreRoute,
   PrayerRoute: PrayerRoute,
+  PrayerSettingsRoute: PrayerSettingsRoute,
   QiblaRoute: QiblaRoute,
   QuranRoute: QuranRouteWithChildren,
   TasbihRoute: TasbihRoute,

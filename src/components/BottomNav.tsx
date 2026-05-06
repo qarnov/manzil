@@ -4,11 +4,11 @@ const tabs = [
   { to: "/", icon: "🏠", label: "Home" },
   { to: "/quran", icon: "📖", label: "Quran" },
   { to: "/duas", icon: "🤲", label: "Duas" },
-  { to: "/prayer", icon: "🕌", label: "Prayer" },
+  { to: "/qibla", icon: "🧭", label: "Qibla" },
   { to: "/more", icon: "☰", label: "More" },
 ];
 
-const moreRoutes = ["/more", "/tasbih", "/qibla", "/zakat", "/hijri"];
+const moreRoutes = ["/more", "/tasbih", "/zakat", "/hijri", "/prayer"];
 
 export function BottomNav() {
   const { pathname } = useLocation();
@@ -17,7 +17,7 @@ export function BottomNav() {
     if (to === "/more") return moreRoutes.some((r) => pathname.startsWith(r));
     if (to === "/duas") return pathname.startsWith("/duas");
     if (to === "/quran") return pathname.startsWith("/quran");
-    if (to === "/prayer") return pathname.startsWith("/prayer");
+    if (to === "/qibla") return pathname.startsWith("/qibla");
     return false;
   };
   return (

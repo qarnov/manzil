@@ -1,15 +1,10 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { TopBar } from "../components/TopBar";
+import { usePrayerTimes } from "../lib/prayerTimes";
 
 export const Route = createFileRoute("/")({ component: Home });
 
-const prayers = [
-  { name: "Fajr", time: "5:04 AM" },
-  { name: "Dhuhr", time: "12:31 PM" },
-  { name: "Asr", time: "4:32 PM", active: true },
-  { name: "Maghrib", time: "6:47 PM" },
-  { name: "Isha", time: "8:01 PM" },
-];
+const ACTIVE_PRAYER = "Asr";
 
 const actions = [
   { to: "/quran", emoji: "📖", label: "Quran" },
@@ -19,6 +14,7 @@ const actions = [
 ];
 
 function Home() {
+  const { prayers } = usePrayerTimes();
   return (
     <>
       <header className="topbar">
@@ -64,24 +60,39 @@ function Home() {
         <span className="mono" style={{ fontSize: 11, color: "var(--gold)" }}>in 1h 24m</span>
       </div>
 
-      <div className="label-mono">TODAY'S PRAYERS</div>
+      <div className="label-mono" style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
+        <span>TODAY'S PRAYERS</span>
+        <Link to="/prayer-settings" className="mono" style={{ fontSize: 9, color: "var(--gold)" }}>EDIT IQAMAH →</Link>
+      </div>
       <div className="card" style={{ padding: 0, overflow: "hidden" }}>
-        {prayers.map((p, i) => (
-          <div key={p.name} style={{
-            display: "flex", justifyContent: "space-between", alignItems: "center",
-            padding: "14px 16px", minHeight: 48,
-            background: p.active ? "var(--card-dark)" : "transparent",
-            borderBottom: i < prayers.length - 1 ? "1px solid var(--border)" : "none",
-          }}>
-            <span style={{ fontFamily: "var(--font-body)", fontSize: 14, fontWeight: 600 }}>{p.name}</span>
-            <span className="mono" style={{ fontSize: 13 }}>{p.time}</span>
-            {p.active ? (
-              <span className="mono" style={{ fontSize: 9, padding: "3px 8px", border: "1px solid var(--gold)", color: "var(--gold)", borderRadius: 10 }}>NEXT</span>
-            ) : (
-              <span style={{ width: 40 }} />
-            )}
-          </div>
-        ))}
+        <div style={{
+          display: "grid", gridTemplateColumns: "1fr auto auto",
+          padding: "8px 16px", background: "var(--card-dark)",
+          borderBottom: "1px solid var(--border)", gap: 12,
+        }} className="mono">
+          <span style={{ fontSize: 9, color: "var(--muted)" }}>PRAYER</span>
+          <span style={{ fontSize: 9, color: "var(--muted)", width: 80, textAlign: "right" }}>AZAAN</span>
+          <span style={{ fontSize: 9, color: "var(--gold)", width: 80, textAlign: "right" }}>IQAMAH</span>
+        </div>
+        {prayers.map((p, i) => {
+          const active = p.name === ACTIVE_PRAYER;
+          return (
+            <div key={p.name} style={{
+              display: "grid", gridTemplateColumns: "1fr auto auto",
+              alignItems: "center", gap: 12,
+              padding: "12px 16px", minHeight: 48,
+              background: active ? "var(--card-dark)" : "transparent",
+              borderBottom: i < prayers.length - 1 ? "1px solid var(--border)" : "none",
+            }}>
+              <span style={{ fontFamily: "var(--font-body)", fontSize: 14, fontWeight: 600 }}>
+                {p.name}
+                {active && <span className="mono" style={{ marginLeft: 8, fontSize: 9, padding: "2px 6px", border: "1px solid var(--gold)", color: "var(--gold)", borderRadius: 10 }}>NEXT</span>}
+              </span>
+              <span className="mono" style={{ fontSize: 13, width: 80, textAlign: "right" }}>{p.azaan}</span>
+              <span className="mono" style={{ fontSize: 13, width: 80, textAlign: "right", color: "var(--gold)" }}>{p.iqamah}</span>
+            </div>
+          );
+        })}
       </div>
 
       <div className="label-mono">QUICK ACTIONS</div>
