@@ -5,6 +5,7 @@ import { TopBar } from "../components/TopBar";
 export const Route = createFileRoute("/more")({ component: More });
 
 const tools = [
+  { to: "/prayer-settings", icon: "🕌", name: "Set Prayer Timings", sub: "CUSTOMIZE IQAMAH PER MASJID" },
   { to: "/tasbih", icon: "📿", name: "Tasbih Counter", sub: "COUNT YOUR DHIKR" },
   { to: "/qibla", icon: "🧭", name: "Qibla Finder", sub: "DIRECTION TO MAKKAH" },
   { to: "/zakat", icon: "💰", name: "Zakat Calculator", sub: "CALCULATE YOUR ZAKAT" },
