@@ -23,7 +23,7 @@ const duas = [
 
 function DuasCategory() {
   const { category } = Route.useParams();
-  const name = category.replace(/-/g, " ").replace(/\b\w/g, (c) => c.toUpperCase());
+  const name = category.replace(/-/g, " ").replace(/\b\w/g, (c: string) => c.toUpperCase());
   return (
     <>
       <TopBar title={`${name} 🌅`} back />
