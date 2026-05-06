@@ -1,15 +1,10 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { TopBar } from "../components/TopBar";
+import { usePrayerTimes } from "../lib/prayerTimes";
 
 export const Route = createFileRoute("/")({ component: Home });
 
-const prayers = [
-  { name: "Fajr", time: "5:04 AM" },
-  { name: "Dhuhr", time: "12:31 PM" },
-  { name: "Asr", time: "4:32 PM", active: true },
-  { name: "Maghrib", time: "6:47 PM" },
-  { name: "Isha", time: "8:01 PM" },
-];
+const ACTIVE_PRAYER = "Asr";
 
 const actions = [
   { to: "/quran", emoji: "📖", label: "Quran" },
