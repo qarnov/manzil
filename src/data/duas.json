@@ -2,204 +2,449 @@
   "categories": [
     {
       "id": "morning",
-      "emoji": "🌅",
       "name": "Morning Duas",
+      "arabicName": "أذكار الصباح",
+      "emoji": "🌅",
+      "instruction": "Recite after Fajr prayer, before sunrise",
+      "count": 8,
       "duas": [
         {
-          "arabic": "أَصْبَحْنَا وَأَصْبَحَ الْمُلْكُ لِلَّهِ، وَالْحَمْدُ لِلَّهِ، لَا إِلَهَ إِلَّا اللَّهُ وَحْدَهُ لَا شَرِيكَ لَهُ",
-          "english": "We have entered the morning and the dominion belongs to Allah. All praise is for Allah. There is no god but Allah alone, with no partner.",
+          "id": "morning_01",
+          "arabic": "أَصْبَحْنَا وَأَصْبَحَ الْمُلْكُ لِلَّهِ، وَالْحَمْدُ لِلَّهِ، لَا إِلَهَ إِلَّا اللَّهُ وَحْدَهُ لَا شَرِيكَ لَهُ، لَهُ الْمُلْكُ وَلَهُ الْحَمْدُ وَهُوَ عَلَى كُلِّ شَيْءٍ قَدِيرٌ",
+          "translation": "We have entered the morning, and the dominion belongs to Allah. All praise is for Allah. There is no god worthy of worship except Allah alone, with no partner. To Him belongs all dominion and all praise, and He is able to do all things.",
           "reference": "Muslim · 2723",
-          "repetition": 1,
-          "benefit": "Acknowledges Allah's sovereignty at the start of the day and is a powerful protection against shirk."
+          "repetitions": 1,
+          "benefit": "The Prophet ﷺ said: 'Whoever says this in the morning has given thanks for that day, and whoever says it in the evening has given thanks for that night.' (Muslim · 2723)"
         },
         {
+          "id": "morning_02",
           "arabic": "اللَّهُمَّ بِكَ أَصْبَحْنَا، وَبِكَ أَمْسَيْنَا، وَبِكَ نَحْيَا، وَبِكَ نَمُوتُ، وَإِلَيْكَ النُّشُورُ",
-          "english": "O Allah, by You we enter the morning and the evening, by You we live and die, and to You is the resurrection.",
-          "reference": "Tirmidhi · 3391",
-          "repetition": 1,
-          "benefit": "A reminder that every breath of the day depends on Allah."
+          "translation": "O Allah, by Your grace we enter the morning, and by Your grace we enter the evening. By Your will we live, by Your will we die, and to You is the resurrection.",
+          "reference": "Abu Dawud · 5068, Tirmidhi · 3391",
+          "repetitions": 1,
+          "benefit": "This dua is a complete declaration of dependence on Allah for every moment of existence — morning, evening, life, death, and what comes after."
         },
         {
-          "arabic": "حَسْبِيَ اللَّهُ لَا إِلَهَ إِلَّا هُوَ عَلَيْهِ تَوَكَّلْتُ وَهُوَ رَبُّ الْعَرْشِ الْعَظِيمِ",
-          "english": "Allah is sufficient for me. There is no god but Him. Upon Him I rely, and He is the Lord of the Mighty Throne.",
-          "reference": "Abu Dawud · 5081",
-          "repetition": 7,
-          "benefit": "Whoever recites this seven times morning and evening, Allah will suffice him for whatever worries him."
+          "id": "morning_03",
+          "arabic": "اللَّهُمَّ أَنْتَ رَبِّي لَا إِلَهَ إِلَّا أَنْتَ، خَلَقْتَنِي وَأَنَا عَبْدُكَ، وَأَنَا عَلَى عَهْدِكَ وَوَعْدِكَ مَا اسْتَطَعْتُ، أَعُوذُ بِكَ مِنْ شَرِّ مَا صَنَعْتُ، أَبُوءُ لَكَ بِنِعْمَتِكَ عَلَيَّ، وَأَبُوءُ بِذَنْبِي فَاغْفِرْ لِي فَإِنَّهُ لَا يَغْفِرُ الذُّنُوبَ إِلَّا أَنْتَ",
+          "translation": "O Allah, You are my Lord. There is no god worthy of worship except You. You created me and I am Your servant. I uphold Your covenant and promise to the best of my ability. I seek refuge in You from the evil of what I have done. I acknowledge Your favour upon me and I acknowledge my sin — so forgive me, for none forgives sins except You.",
+          "reference": "Bukhari · 6306",
+          "repetitions": 1,
+          "benefit": "Sayyidul Istighfar — the Master of Seeking Forgiveness. The Prophet ﷺ said: 'Whoever says this with certainty in the morning and dies before evening enters Paradise. And whoever says it with certainty in the evening and dies before morning enters Paradise.' (Bukhari · 6306)"
         },
         {
+          "id": "morning_04",
+          "arabic": "اللَّهُ لَا إِلَهَ إِلَّا هُوَ الْحَيُّ الْقَيُّومُ لَا تَأْخُذُهُ سِنَةٌ وَلَا نَوْمٌ لَّهُ مَا فِي السَّمَاوَاتِ وَمَا فِي الْأَرْضِ",
+          "translation": "Ayatul Kursi — Allah! There is no god worthy of worship except Him, the Ever-Living, the Sustainer of all. Neither drowsiness nor sleep overtakes Him. To Him belongs whatever is in the heavens and whatever is on the earth. (Quran 2:255 — recite in full)",
+          "reference": "Quran 2:255 · Nasai (Amalul Yawm · 100)",
+          "repetitions": 1,
+          "benefit": "The Prophet ﷺ said: 'Whoever recites Ayatul Kursi after every obligatory prayer, nothing will prevent him from entering Paradise except death.' (Nasai · Amalul Yawm 100). Ibn Kathir said it is the greatest verse in the Quran."
+        },
+        {
+          "id": "morning_05",
           "arabic": "بِسْمِ اللَّهِ الَّذِي لَا يَضُرُّ مَعَ اسْمِهِ شَيْءٌ فِي الْأَرْضِ وَلَا فِي السَّمَاءِ وَهُوَ السَّمِيعُ الْعَلِيمُ",
-          "english": "In the name of Allah, with whose name nothing on earth or in the heavens can cause harm. He is the All-Hearing, the All-Knowing.",
-          "reference": "Abu Dawud · 5088",
-          "repetition": 3,
-          "benefit": "Whoever says this three times will not be afflicted by any sudden calamity until evening."
+          "translation": "In the name of Allah, by whose name nothing in the earth or the heavens can cause harm, and He is the All-Hearing, the All-Knowing.",
+          "reference": "Abu Dawud · 5088, Tirmidhi · 3388",
+          "repetitions": 3,
+          "benefit": "The Prophet ﷺ said: 'Whoever says this three times in the morning will not be struck by any sudden affliction until the evening, and whoever says it three times in the evening will not be struck by any sudden affliction until the morning.' (Abu Dawud · 5088)"
+        },
+        {
+          "id": "morning_06",
+          "arabic": "سُبْحَانَ اللَّهِ وَبِحَمْدِهِ",
+          "translation": "Glory be to Allah and praise be to Him.",
+          "reference": "Bukhari · 6405, Muslim · 2692",
+          "repetitions": 100,
+          "benefit": "The Prophet ﷺ said: 'Whoever says SubhanAllahi wa bihamdihi one hundred times in the morning and one hundred times in the evening — no one will come on the Day of Resurrection with anything better than him, except someone who said the same or more.' (Muslim · 2692)"
+        },
+        {
+          "id": "morning_07",
+          "arabic": "قُلْ هُوَ اللَّهُ أَحَدٌ — قُلْ أَعُوذُ بِرَبِّ الْفَلَقِ — قُلْ أَعُوذُ بِرَبِّ النَّاسِ",
+          "translation": "Recite Surah Al-Ikhlas, Surah Al-Falaq, and Surah An-Nas — each in full.",
+          "reference": "Abu Dawud · 5082, Tirmidhi · 3575",
+          "repetitions": 3,
+          "benefit": "The Prophet ﷺ said: 'Whoever recites these three surahs three times in the morning and three times in the evening, they will suffice him against everything.' (Abu Dawud · 5082). They are protection from evil, the evil eye, and all harm."
+        },
+        {
+          "id": "morning_08",
+          "arabic": "اللَّهُمَّ عَافِنِي فِي بَدَنِي، اللَّهُمَّ عَافِنِي فِي سَمْعِي، اللَّهُمَّ عَافِنِي فِي بَصَرِي، لَا إِلَهَ إِلَّا أَنْتَ",
+          "translation": "O Allah, grant me health in my body. O Allah, grant me health in my hearing. O Allah, grant me health in my sight. There is no god worthy of worship except You.",
+          "reference": "Abu Dawud · 5090",
+          "repetitions": 3,
+          "benefit": "Abu Bakr As-Siddiq رضي الله عنه recited this every morning and evening on the instruction of the Prophet ﷺ. It is a comprehensive supplication for physical, auditory, and visual wellbeing."
         }
       ]
     },
     {
       "id": "evening",
-      "emoji": "🌆",
       "name": "Evening Duas",
+      "arabicName": "أذكار المساء",
+      "emoji": "🌆",
+      "instruction": "Recite after Asr prayer, before Maghrib",
+      "count": 8,
       "duas": [
         {
-          "arabic": "أَمْسَيْنَا وَأَمْسَى الْمُلْكُ لِلَّهِ، وَالْحَمْدُ لِلَّهِ",
-          "english": "We have entered the evening and the dominion belongs to Allah. All praise is for Allah.",
+          "id": "evening_01",
+          "arabic": "أَمْسَيْنَا وَأَمْسَى الْمُلْكُ لِلَّهِ، وَالْحَمْدُ لِلَّهِ، لَا إِلَهَ إِلَّا اللَّهُ وَحْدَهُ لَا شَرِيكَ لَهُ، لَهُ الْمُلْكُ وَلَهُ الْحَمْدُ وَهُوَ عَلَى كُلِّ شَيْءٍ قَدِيرٌ",
+          "translation": "We have entered the evening, and the dominion belongs to Allah. All praise is for Allah. There is no god worthy of worship except Allah alone, with no partner. To Him belongs all dominion and all praise, and He is able to do all things.",
           "reference": "Muslim · 2723",
-          "repetition": 1,
-          "benefit": "An evening counterpart to the morning remembrance — affirms Allah's dominion."
+          "repetitions": 1,
+          "benefit": "Whoever says this in the evening has given thanks for that night and acknowledged that all dominion belongs to Allah alone. (Muslim · 2723)"
         },
         {
-          "arabic": "اللَّهُمَّ مَا أَمْسَى بِي مِنْ نِعْمَةٍ أَوْ بِأَحَدٍ مِنْ خَلْقِكَ فَمِنْكَ وَحْدَكَ لَا شَرِيكَ لَكَ",
-          "english": "O Allah, whatever blessing has come to me or any of Your creation this evening is from You alone, with no partner.",
-          "reference": "Abu Dawud · 5073",
-          "repetition": 1,
-          "benefit": "Whoever says this in the evening has fulfilled the gratitude due that night."
+          "id": "evening_02",
+          "arabic": "اللَّهُمَّ بِكَ أَمْسَيْنَا، وَبِكَ أَصْبَحْنَا، وَبِكَ نَحْيَا، وَبِكَ نَمُوتُ، وَإِلَيْكَ الْمَصِيرُ",
+          "translation": "O Allah, by Your grace we enter the evening, and by Your grace we enter the morning. By Your will we live, by Your will we die, and to You is the final return.",
+          "reference": "Abu Dawud · 5068, Tirmidhi · 3391",
+          "repetitions": 1,
+          "benefit": "The change from 'resurrection' in the morning version to 'final return' in the evening version reflects that the day is ending — a reminder that all journeys, including life itself, return to Allah."
         },
         {
-          "arabic": "أَعُوذُ بِكَلِمَاتِ اللَّهِ التَّامَّاتِ مِنْ شَرِّ مَا خَلَقَ",
-          "english": "I seek refuge in the perfect words of Allah from the evil of what He has created.",
-          "reference": "Muslim · 2708",
-          "repetition": 3,
-          "benefit": "Whoever says this three times in the evening will not be harmed by anything that night."
+          "id": "evening_03",
+          "arabic": "اللَّهُمَّ أَنْتَ رَبِّي لَا إِلَهَ إِلَّا أَنْتَ، خَلَقْتَنِي وَأَنَا عَبْدُكَ، وَأَنَا عَلَى عَهْدِكَ وَوَعْدِكَ مَا اسْتَطَعْتُ، أَعُوذُ بِكَ مِنْ شَرِّ مَا صَنَعْتُ، أَبُوءُ لَكَ بِنِعْمَتِكَ عَلَيَّ، وَأَبُوءُ بِذَنْبِي فَاغْفِرْ لِي فَإِنَّهُ لَا يَغْفِرُ الذُّنُوبَ إِلَّا أَنْتَ",
+          "translation": "O Allah, You are my Lord. There is no god worthy of worship except You. You created me and I am Your servant. I uphold Your covenant and promise to the best of my ability. I seek refuge in You from the evil of what I have done. I acknowledge Your favour upon me and I acknowledge my sin — so forgive me, for none forgives sins except You.",
+          "reference": "Bukhari · 6306",
+          "repetitions": 1,
+          "benefit": "Sayyidul Istighfar. The Prophet ﷺ said: 'Whoever says this with certainty in the evening and dies before morning enters Paradise.' (Bukhari · 6306)"
+        },
+        {
+          "id": "evening_04",
+          "arabic": "اللَّهُ لَا إِلَهَ إِلَّا هُوَ الْحَيُّ الْقَيُّومُ",
+          "translation": "Ayatul Kursi — Allah! There is no god worthy of worship except Him, the Ever-Living, the Sustainer of all. (Quran 2:255 — recite in full)",
+          "reference": "Quran 2:255 · Nasai (Amalul Yawm · 100)",
+          "repetitions": 1,
+          "benefit": "The Prophet ﷺ said: 'Whoever recites Ayatul Kursi after every obligatory prayer, nothing will prevent him from entering Paradise except death.' A shield of protection for the night ahead."
+        },
+        {
+          "id": "evening_05",
+          "arabic": "بِسْمِ اللَّهِ الَّذِي لَا يَضُرُّ مَعَ اسْمِهِ شَيْءٌ فِي الْأَرْضِ وَلَا فِي السَّمَاءِ وَهُوَ السَّمِيعُ الْعَلِيمُ",
+          "translation": "In the name of Allah, by whose name nothing in the earth or the heavens can cause harm, and He is the All-Hearing, the All-Knowing.",
+          "reference": "Abu Dawud · 5088, Tirmidhi · 3388",
+          "repetitions": 3,
+          "benefit": "The Prophet ﷺ said: 'Whoever says this three times in the evening will not be struck by any sudden affliction until the morning.' (Abu Dawud · 5088). A complete protection for the night."
+        },
+        {
+          "id": "evening_06",
+          "arabic": "اللَّهُمَّ مَا أَمْسَى بِي مِنْ نِعْمَةٍ أَوْ بِأَحَدٍ مِنْ خَلْقِكَ فَمِنْكَ وَحْدَكَ لَا شَرِيكَ لَكَ، فَلَكَ الْحَمْدُ وَلَكَ الشُّكْرُ",
+          "translation": "O Allah, whatever blessing I or any of Your creation have entered this evening with, it is from You alone, with no partner. To You belongs all praise and to You belongs all thanks.",
+          "reference": "Abu Dawud · 5073, Ibn Hibban · 861",
+          "repetitions": 1,
+          "benefit": "The Prophet ﷺ said: 'Whoever says this in the evening has given thanks for that night.' (Abu Dawud · 5073). Every blessing — health, safety, family, provision — is acknowledged as coming only from Allah."
+        },
+        {
+          "id": "evening_07",
+          "arabic": "سُبْحَانَ اللَّهِ وَبِحَمْدِهِ",
+          "translation": "Glory be to Allah and praise be to Him.",
+          "reference": "Muslim · 2692",
+          "repetitions": 100,
+          "benefit": "The Prophet ﷺ said: 'Whoever says this one hundred times in the evening — no one on the Day of Resurrection will come with anything better, except someone who said the same or more.' (Muslim · 2692)"
+        },
+        {
+          "id": "evening_08",
+          "arabic": "اللَّهُمَّ إِنِّي أَمْسَيْتُ أُشْهِدُكَ وَأُشْهِدُ حَمَلَةَ عَرْشِكَ وَمَلَائِكَتَكَ وَجَمِيعَ خَلْقِكَ أَنَّكَ أَنْتَ اللَّهُ لَا إِلَهَ إِلَّا أَنْتَ وَحْدَكَ لَا شَرِيكَ لَكَ، وَأَنَّ مُحَمَّداً عَبْدُكَ وَرَسُولُكَ",
+          "translation": "O Allah, I have entered the evening calling You to witness, and calling the bearers of Your Throne, Your angels, and all of Your creation to witness, that You are Allah — there is no god worthy of worship except You alone, with no partner — and that Muhammad ﷺ is Your servant and messenger.",
+          "reference": "Abu Dawud · 5069",
+          "repetitions": 4,
+          "benefit": "The Prophet ﷺ said: 'Whoever says this four times in the evening, Allah will free a quarter of him from the Fire for each time said. Whoever says it four times will be completely freed from the Fire.' (Abu Dawud · 5069)"
         }
       ]
     },
     {
       "id": "bathroom",
-      "emoji": "🚿",
       "name": "Bathroom",
+      "arabicName": "دعاء الخلاء",
+      "emoji": "🚿",
+      "instruction": "Recite before entering and after leaving the bathroom",
+      "count": 3,
       "duas": [
         {
+          "id": "bathroom_01",
           "arabic": "بِسْمِ اللَّهِ، اللَّهُمَّ إِنِّي أَعُوذُ بِكَ مِنَ الْخُبُثِ وَالْخَبَائِثِ",
-          "english": "In the name of Allah. O Allah, I seek refuge in You from male and female evil beings.",
-          "reference": "Bukhari · 142",
-          "repetition": 1,
-          "benefit": "Said before entering — protects from evil jinn frequenting impure places."
+          "translation": "In the name of Allah. O Allah, I seek refuge in You from the male and female evil spirits.",
+          "reference": "Bukhari · 142, Muslim · 375",
+          "repetitions": 1,
+          "benefit": "The Prophet ﷺ said this before entering the bathroom. Anas ibn Malik رضي الله عنه narrated: 'When the Prophet ﷺ entered the toilet he would say these words.' The bathroom is a place where shayateen (evil spirits) are present, and this dua is a shield of protection."
         },
         {
+          "id": "bathroom_02",
           "arabic": "غُفْرَانَكَ",
-          "english": "I seek Your forgiveness.",
-          "reference": "Abu Dawud · 30",
-          "repetition": 1,
-          "benefit": "Said upon leaving the bathroom — gratitude for the relief Allah granted."
+          "translation": "I seek Your forgiveness.",
+          "reference": "Abu Dawud · 30, Tirmidhi · 7, Ibn Majah · 300",
+          "repetitions": 1,
+          "benefit": "Aisha رضي الله عنها narrated that the Prophet ﷺ would say this upon leaving the bathroom. The scholars explain this is because the bathroom is a place where one cannot make dhikr of Allah, so upon exiting, one immediately seeks forgiveness for that temporary absence of remembrance."
+        },
+        {
+          "id": "bathroom_03",
+          "arabic": "الْحَمْدُ لِلَّهِ الَّذِي أَذْهَبَ عَنِّي الْأَذَى وَعَافَانِي",
+          "translation": "All praise is for Allah who removed from me what was harmful and granted me wellbeing.",
+          "reference": "Ibn Majah · 301",
+          "repetitions": 1,
+          "benefit": "This dua is a reminder of the immense blessing of health and the body's ability to rid itself of harm. The scholars note that the functioning of the digestive system is one of the most overlooked yet greatest blessings of Allah — this dua is gratitude for it."
         }
       ]
     },
     {
       "id": "masjid",
-      "emoji": "🕌",
       "name": "Masjid",
+      "arabicName": "دعاء المسجد",
+      "emoji": "🕌",
+      "instruction": "Recite when entering and leaving the masjid",
+      "count": 6,
       "duas": [
         {
-          "arabic": "اللَّهُمَّ افْتَحْ لِي أَبْوَابَ رَحْمَتِكَ",
-          "english": "O Allah, open for me the doors of Your mercy.",
-          "reference": "Muslim · 713",
-          "repetition": 1,
-          "benefit": "Said when entering the masjid with the right foot first."
+          "id": "masjid_01",
+          "arabic": "أَعُوذُ بِاللَّهِ الْعَظِيمِ، وَبِوَجْهِهِ الْكَرِيمِ، وَسُلْطَانِهِ الْقَدِيمِ، مِنَ الشَّيْطَانِ الرَّجِيمِ",
+          "translation": "I seek refuge in Allah the Magnificent, in His noble countenance, and in His eternal power, from the accursed Shaytan.",
+          "reference": "Abu Dawud · 466",
+          "repetitions": 1,
+          "benefit": "The Prophet ﷺ said: 'When a person says this upon entering the masjid, Shaytan says: He is protected from me for the rest of the day.' (Abu Dawud · 466). Recite this before stepping in with the right foot."
         },
         {
-          "arabic": "اللَّهُمَّ إِنِّي أَسْأَلُكَ مِنْ فَضْلِكَ",
-          "english": "O Allah, I ask You from Your bounty.",
+          "id": "masjid_02",
+          "arabic": "بِسْمِ اللَّهِ وَالصَّلَاةُ وَالسَّلَامُ عَلَى رَسُولِ اللَّهِ، اللَّهُمَّ افْتَحْ لِي أَبْوَابَ رَحْمَتِكَ",
+          "translation": "In the name of Allah, and peace and blessings be upon the Messenger of Allah. O Allah, open for me the doors of Your mercy.",
           "reference": "Muslim · 713",
-          "repetition": 1,
-          "benefit": "Said upon leaving the masjid with the left foot first."
+          "repetitions": 1,
+          "benefit": "The Prophet ﷺ instructed that this be said upon entering the masjid with the right foot first. The masjid is the house of Allah — beginning with His name and sending salawat on the Prophet ﷺ is the most fitting opening."
+        },
+        {
+          "id": "masjid_03",
+          "arabic": "بِسْمِ اللَّهِ وَالصَّلَاةُ وَالسَّلَامُ عَلَى رَسُولِ اللَّهِ، اللَّهُمَّ إِنِّي أَسْأَلُكَ مِنْ فَضْلِكَ، اللَّهُمَّ اعْصِمْنِي مِنَ الشَّيْطَانِ الرَّجِيمِ",
+          "translation": "In the name of Allah, and peace and blessings be upon the Messenger of Allah. O Allah, I ask You from Your bounty. O Allah, protect me from the accursed Shaytan.",
+          "reference": "Muslim · 713, Ibn Majah · 773",
+          "repetitions": 1,
+          "benefit": "This is the dua for leaving the masjid, said while stepping out with the left foot. Asking for Allah's bounty upon leaving is a reminder that everything outside the masjid — sustenance, provision, daily affairs — all come from His grace."
+        },
+        {
+          "id": "masjid_04",
+          "arabic": "اللَّهُمَّ رَبَّ هَذِهِ الدَّعْوَةِ التَّامَّةِ وَالصَّلَاةِ الْقَائِمَةِ آتِ مُحَمَّداً الْوَسِيلَةَ وَالْفَضِيلَةَ وَابْعَثْهُ مَقَاماً مَحْمُوداً الَّذِي وَعَدْتَهُ",
+          "translation": "O Allah, Lord of this perfect call and the prayer to be offered, grant Muhammad ﷺ the intercession and the privilege, and raise him to the praised station that You have promised him.",
+          "reference": "Bukhari · 614",
+          "repetitions": 1,
+          "benefit": "The Prophet ﷺ said: 'Whoever says this after hearing the adhan, my intercession (shafa'ah) will be permitted for him on the Day of Resurrection.' (Bukhari · 614). This is one of the most powerful duas connected to the call to prayer."
+        },
+        {
+          "id": "masjid_05",
+          "arabic": "اللَّهُمَّ اغْفِرْ لِي ذُنُوبِي وَافْتَحْ لِي أَبْوَابَ رَحْمَتِكَ",
+          "translation": "O Allah, forgive my sins and open for me the doors of Your mercy.",
+          "reference": "Muslim · 713, Tirmidhi · 314",
+          "repetitions": 1,
+          "benefit": "An additional dua upon entering the masjid. The masjid is a place of forgiveness and mercy — beginning with this supplication sets the intention that every moment inside is spent in the pursuit of Allah's pleasure and pardon."
+        },
+        {
+          "id": "masjid_06",
+          "arabic": "اللَّهُمَّ اغْفِرْ لِي ذُنُوبِي وَافْتَحْ لِي أَبْوَابَ فَضْلِكَ",
+          "translation": "O Allah, forgive my sins and open for me the doors of Your bounty.",
+          "reference": "Muslim · 713",
+          "repetitions": 1,
+          "benefit": "Said upon leaving the masjid. Asking for forgiveness upon exit acknowledges that one is returning to the world of distractions. Asking for Allah's bounty signals that all the provision and blessings one seeks outside must come through His permission."
         }
       ]
     },
     {
-      "id": "after-prayer",
-      "emoji": "🤲",
+      "id": "after_prayer",
       "name": "After Prayer",
+      "arabicName": "أذكار بعد الصلاة",
+      "emoji": "🙏",
+      "instruction": "Recite after completing each of the 5 daily prayers",
+      "count": 8,
       "duas": [
         {
+          "id": "after_prayer_01",
           "arabic": "أَسْتَغْفِرُ اللَّهَ",
-          "english": "I seek the forgiveness of Allah.",
+          "translation": "I seek forgiveness from Allah.",
           "reference": "Muslim · 591",
-          "repetition": 3,
-          "benefit": "Recited three times after every fard prayer."
+          "repetitions": 3,
+          "benefit": "Thawban رضي الله عنه narrated that after giving salam the Prophet ﷺ would seek forgiveness three times. Istighfar after salah is a recognition that even in the act of worship, one falls short, and Allah's forgiveness covers all shortcomings."
         },
         {
+          "id": "after_prayer_02",
+          "arabic": "اللَّهُمَّ أَنْتَ السَّلَامُ وَمِنْكَ السَّلَامُ، تَبَارَكْتَ يَا ذَا الْجَلَالِ وَالْإِكْرَامِ",
+          "translation": "O Allah, You are Peace and from You comes peace. Blessed are You, O Possessor of majesty and honour.",
+          "reference": "Muslim · 591",
+          "repetitions": 1,
+          "benefit": "Said immediately after salam. The scholars explain that ending the prayer by greeting with 'assalamu alaykum' and then addressing Allah as 'As-Salam' is a beautiful closing — the prayer ends in peace and that peace is attributed entirely to Allah."
+        },
+        {
+          "id": "after_prayer_03",
+          "arabic": "لَا إِلَهَ إِلَّا اللَّهُ وَحْدَهُ لَا شَرِيكَ لَهُ، لَهُ الْمُلْكُ وَلَهُ الْحَمْدُ وَهُوَ عَلَى كُلِّ شَيْءٍ قَدِيرٌ",
+          "translation": "There is no god worthy of worship except Allah alone, with no partner. To Him belongs all dominion and all praise, and He is able to do all things.",
+          "reference": "Muslim · 597",
+          "repetitions": 10,
+          "benefit": "The Prophet ﷺ said: 'Whoever says this ten times after Fajr and Maghrib will have ten good deeds written, ten sins erased, and it is equivalent to freeing ten slaves. He will be protected from Shaytan that day and nothing will destroy his deed.' (Muslim · 597). Recite once after other prayers."
+        },
+        {
+          "id": "after_prayer_04",
           "arabic": "سُبْحَانَ اللَّهِ",
-          "english": "Glory be to Allah.",
-          "reference": "Muslim · 597",
-          "repetition": 33,
-          "benefit": "Part of the Tasbih Fatimah — wipes away sins even if as much as the foam of the sea."
+          "translation": "Glory be to Allah.",
+          "reference": "Muslim · 595",
+          "repetitions": 33,
+          "benefit": "Part of the Tasbih after prayer. The Prophet ﷺ said: 'Whoever glorifies Allah (SubhanAllah) 33 times, praises Him (Alhamdulillah) 33 times, and magnifies Him (Allahu Akbar) 33 times after every prayer — and completes 100 with La ilaha illallah — his sins will be forgiven even if they are as abundant as the foam of the sea.' (Muslim · 597)"
         },
         {
+          "id": "after_prayer_05",
           "arabic": "الْحَمْدُ لِلَّهِ",
-          "english": "All praise is for Allah.",
-          "reference": "Muslim · 597",
-          "repetition": 33,
-          "benefit": "Recited 33 times after every fard prayer."
+          "translation": "All praise is for Allah.",
+          "reference": "Muslim · 595",
+          "repetitions": 33,
+          "benefit": "Second part of the Tasbih after prayer. Recite 33 times after every salah following SubhanAllah. The combination of glorification (tasbih), praise (tahmid), and magnification (takbir) covers the three greatest forms of verbal worship in Islam."
         },
         {
+          "id": "after_prayer_06",
           "arabic": "اللَّهُ أَكْبَرُ",
-          "english": "Allah is the Greatest.",
-          "reference": "Muslim · 597",
-          "repetition": 34,
-          "benefit": "Completes the Tasbih Fatimah after every fard prayer."
+          "translation": "Allah is the Greatest.",
+          "reference": "Muslim · 595",
+          "repetitions": 33,
+          "benefit": "Third part of the Tasbih after prayer. Recite 33 times after Alhamdulillah. Then complete to 100 with: 'La ilaha illallah wahdahu la sharika lahu, lahul mulku wa lahul hamdu wa huwa ala kulli shay'in qadir.' This combination earns the forgiveness of all sins."
+        },
+        {
+          "id": "after_prayer_07",
+          "arabic": "اللَّهُ لَا إِلَهَ إِلَّا هُوَ الْحَيُّ الْقَيُّومُ",
+          "translation": "Ayatul Kursi — Allah! There is no god worthy of worship except Him, the Ever-Living, the Sustainer of all. (Quran 2:255 — recite in full)",
+          "reference": "Quran 2:255 · Nasai (Amalul Yawm · 100)",
+          "repetitions": 1,
+          "benefit": "The Prophet ﷺ said: 'Whoever recites Ayatul Kursi after every obligatory prayer, nothing will stand between him and entering Paradise except death.' (Nasai · Amalul Yawm 100). Ibn Kathir called it the greatest verse in the entire Quran."
+        },
+        {
+          "id": "after_prayer_08",
+          "arabic": "اللَّهُمَّ أَعِنِّي عَلَى ذِكْرِكَ وَشُكْرِكَ وَحُسْنِ عِبَادَتِكَ",
+          "translation": "O Allah, help me to remember You, to be grateful to You, and to worship You in the best manner.",
+          "reference": "Abu Dawud · 1522, Nasai · 1303",
+          "repetitions": 1,
+          "benefit": "Muadh ibn Jabal رضي الله عنه narrated that the Prophet ﷺ took his hand and said: 'O Muadh, by Allah I love you, so never forget to say after every prayer: O Allah, help me to remember You, to be grateful to You, and to worship You in the best manner.' This is a dua the Prophet ﷺ personally recommended."
         }
       ]
     },
     {
       "id": "eating",
-      "emoji": "🍽️",
       "name": "Eating",
+      "arabicName": "دعاء الطعام",
+      "emoji": "🍽️",
+      "instruction": "Recite before and after meals",
+      "count": 4,
       "duas": [
         {
+          "id": "eating_01",
           "arabic": "بِسْمِ اللَّهِ",
-          "english": "In the name of Allah.",
-          "reference": "Abu Dawud · 3767",
-          "repetition": 1,
-          "benefit": "Said before eating — invites barakah into the meal."
+          "translation": "In the name of Allah.",
+          "reference": "Abu Dawud · 3767, Tirmidhi · 1858",
+          "repetitions": 1,
+          "benefit": "The Prophet ﷺ said: 'When one of you eats, let him mention the name of Allah at the beginning.' (Abu Dawud · 3767). Saying Bismillah before eating keeps Shaytan away from sharing in your food and brings barakah to the meal."
         },
         {
+          "id": "eating_02",
+          "arabic": "بِسْمِ اللَّهِ أَوَّلَهُ وَآخِرَهُ",
+          "translation": "In the name of Allah, at the beginning and at the end of it.",
+          "reference": "Abu Dawud · 3767, Tirmidhi · 1858",
+          "repetitions": 1,
+          "benefit": "The Prophet ﷺ said: 'If one forgets to say Bismillah at the start of a meal, let him say: Bismillahi awwalahu wa akhirah — and Shaytan will vomit out what he had consumed of the food.' (Abu Dawud · 3767). Say this if you forgot to say Bismillah at the start."
+        },
+        {
+          "id": "eating_03",
           "arabic": "الْحَمْدُ لِلَّهِ الَّذِي أَطْعَمَنِي هَذَا وَرَزَقَنِيهِ مِنْ غَيْرِ حَوْلٍ مِنِّي وَلَا قُوَّةٍ",
-          "english": "All praise is for Allah who fed me this and provided it without any might or power from me.",
-          "reference": "Tirmidhi · 3458",
-          "repetition": 1,
-          "benefit": "Said after eating — past sins are forgiven."
+          "translation": "All praise is for Allah who fed me this and provided it for me without any power or strength on my part.",
+          "reference": "Abu Dawud · 4023, Tirmidhi · 3458",
+          "repetitions": 1,
+          "benefit": "The Prophet ﷺ said: 'Whoever says this after eating, his previous sins will be forgiven.' (Abu Dawud · 4023). Acknowledging that food came without your own power is the purest form of gratitude — recognising that even the strength to earn it comes from Allah."
+        },
+        {
+          "id": "eating_04",
+          "arabic": "اللَّهُمَّ بَارِكْ لَهُمْ فِيمَا رَزَقْتَهُمْ وَاغْفِرْ لَهُمْ وَارْحَمْهُمْ",
+          "translation": "O Allah, bless them in what You have provided for them, forgive them, and have mercy on them.",
+          "reference": "Muslim · 2042",
+          "repetitions": 1,
+          "benefit": "The Prophet ﷺ said this dua when invited to someone's home for food. (Muslim · 2042). It is sunnah to make dua for the host when eating at their table — a beautiful act of gratitude that brings barakah to their household."
         }
       ]
     },
     {
       "id": "sleeping",
-      "emoji": "🌙",
       "name": "Sleeping",
+      "arabicName": "دعاء النوم",
+      "emoji": "😴",
+      "instruction": "Recite before going to sleep",
+      "count": 5,
       "duas": [
         {
+          "id": "sleeping_01",
           "arabic": "بِاسْمِكَ اللَّهُمَّ أَمُوتُ وَأَحْيَا",
-          "english": "In Your name, O Allah, I die and I live.",
-          "reference": "Bukhari · 6324",
-          "repetition": 1,
-          "benefit": "Said when going to sleep — places trust in Allah for the night."
+          "translation": "In Your name, O Allah, I die and I live.",
+          "reference": "Bukhari · 6312",
+          "repetitions": 1,
+          "benefit": "The Prophet ﷺ would say this when going to sleep. Sleep is described in the Quran as a 'minor death' — the soul is taken and returned. This dua acknowledges that even in sleep, life and death are entirely in Allah's hands."
         },
         {
-          "arabic": "سُبْحَانَ اللَّهِ، وَالْحَمْدُ لِلَّهِ، وَاللَّهُ أَكْبَرُ",
-          "english": "Glory to Allah, all praise is to Allah, and Allah is the Greatest.",
-          "reference": "Bukhari · 6318",
-          "repetition": 33,
-          "benefit": "Taught by the Prophet ﷺ to Fatimah and Ali — better than a servant."
+          "id": "sleeping_02",
+          "arabic": "اللَّهُمَّ قِنِي عَذَابَكَ يَوْمَ تَبْعَثُ عِبَادَكَ",
+          "translation": "O Allah, protect me from Your punishment on the Day You resurrect Your servants.",
+          "reference": "Abu Dawud · 5045, Ahmad · 18369",
+          "repetitions": 3,
+          "benefit": "Al-Bara ibn Azib رضي الله عنه narrated that the Prophet ﷺ instructed him to say this three times before sleeping. Ending the day with a reminder of the Day of Resurrection keeps the heart focused on what truly matters."
+        },
+        {
+          "id": "sleeping_03",
+          "arabic": "سُبْحَانَ اللَّهِ — الْحَمْدُ لِلَّهِ — اللَّهُ أَكْبَرُ",
+          "translation": "SubhanAllah (Glory be to Allah) — Alhamdulillah (All praise is for Allah) — Allahu Akbar (Allah is the Greatest).",
+          "reference": "Bukhari · 3113, Muslim · 2727",
+          "repetitions": 33,
+          "benefit": "Ali رضي الله عنه and Fatimah رضي الله عنها came to the Prophet ﷺ asking for a servant due to the hardship of work. He told them: 'Shall I not tell you of something better? Say SubhanAllah 33 times, Alhamdulillah 33 times, and Allahu Akbar 34 times when you go to bed. That is better for you than a servant.' (Bukhari · 3113)"
+        },
+        {
+          "id": "sleeping_04",
+          "arabic": "قُلْ هُوَ اللَّهُ أَحَدٌ — قُلْ أَعُوذُ بِرَبِّ الْفَلَقِ — قُلْ أَعُوذُ بِرَبِّ النَّاسِ",
+          "translation": "Recite Surah Al-Ikhlas, Surah Al-Falaq, and Surah An-Nas — each in full — then blow gently into your cupped hands and wipe over your face and body.",
+          "reference": "Bukhari · 5017",
+          "repetitions": 3,
+          "benefit": "Aisha رضي الله عنها narrated: 'Every night when the Prophet ﷺ went to bed, he would cup his hands, blow into them, recite the three quls, then wipe his hands over his face and body. He did this three times.' (Bukhari · 5017). This is among the most protective acts before sleep."
+        },
+        {
+          "id": "sleeping_05",
+          "arabic": "اللَّهُمَّ أَسْلَمْتُ نَفْسِي إِلَيْكَ، وَفَوَّضْتُ أَمْرِي إِلَيْكَ، وَأَلْجَأْتُ ظَهْرِي إِلَيْكَ، رَغْبَةً وَرَهْبَةً إِلَيْكَ، لَا مَلْجَأَ وَلَا مَنْجَا مِنْكَ إِلَّا إِلَيْكَ، آمَنْتُ بِكِتَابِكَ الَّذِي أَنْزَلْتَ، وَبِنَبِيِّكَ الَّذِي أَرْسَلْتَ",
+          "translation": "O Allah, I submit myself to You, I entrust my affairs to You, I turn my back to You for support — in hope and in fear of You. There is no refuge and no escape from You except to You. I believe in Your Book which You revealed and in Your Prophet whom You sent.",
+          "reference": "Bukhari · 247, Muslim · 2710",
+          "repetitions": 1,
+          "benefit": "The Prophet ﷺ said: 'Whoever says this and dies that night will die upon the fitrah (natural state of Islam).' (Bukhari · 247). He also said: 'Make these the last words you say' — meaning it should be the very last thing before closing your eyes."
         }
       ]
     },
     {
       "id": "travelling",
-      "emoji": "✈️",
       "name": "Travelling",
+      "arabicName": "دعاء السفر",
+      "emoji": "🚗",
+      "instruction": "Recite when beginning a journey or boarding a vehicle",
+      "count": 4,
       "duas": [
         {
+          "id": "travelling_01",
           "arabic": "سُبْحَانَ الَّذِي سَخَّرَ لَنَا هَذَا وَمَا كُنَّا لَهُ مُقْرِنِينَ، وَإِنَّا إِلَى رَبِّنَا لَمُنْقَلِبُونَ",
-          "english": "Glory to Him who has subjected this to us, and we could never have it by our efforts. Indeed, to our Lord we will return.",
-          "reference": "Muslim · 1342",
-          "repetition": 1,
-          "benefit": "Recited when boarding a vehicle, ship, or plane."
+          "translation": "Glory be to the One who has subjected this to us, and we could not have done so ourselves. And indeed, to our Lord we are surely returning.",
+          "reference": "Abu Dawud · 2602, Tirmidhi · 3446",
+          "repetitions": 1,
+          "benefit": "Allah revealed this in Surah Az-Zukhruf (43:13-14). The Prophet ﷺ would recite this whenever he mounted a vehicle. It is a recognition that the vehicle, the journey, and the ability to travel are all gifts from Allah — and a reminder that the ultimate journey is the return to Him."
         },
         {
-          "arabic": "أَعُوذُ بِكَلِمَاتِ اللَّهِ التَّامَّاتِ مِنْ شَرِّ مَا خَلَقَ",
-          "english": "I seek refuge in the perfect words of Allah from the evil of what He has created.",
-          "reference": "Muslim · 2708",
-          "repetition": 3,
-          "benefit": "Said upon arriving at a new place — protects from harm there."
+          "id": "travelling_02",
+          "arabic": "اللَّهُمَّ إِنَّا نَسْأَلُكَ فِي سَفَرِنَا هَذَا الْبِرَّ وَالتَّقْوَى، وَمِنَ الْعَمَلِ مَا تَرْضَى، اللَّهُمَّ هَوِّنْ عَلَيْنَا سَفَرَنَا هَذَا وَاطْوِ عَنَّا بُعْدَهُ، اللَّهُمَّ أَنْتَ الصَّاحِبُ فِي السَّفَرِ وَالْخَلِيفَةُ فِي الْأَهْلِ",
+          "translation": "O Allah, we ask You on this journey for righteousness, piety, and deeds that please You. O Allah, make this journey easy for us and fold up its distance for us. O Allah, You are the Companion in travel and the Successor over our family.",
+          "reference": "Muslim · 1342",
+          "repetitions": 1,
+          "benefit": "This was the dua of the Prophet ﷺ at the start of every journey. (Muslim · 1342). It asks for three things: a righteous journey, ease on the road, and protection of the family left behind — covering every concern a traveller has."
+        },
+        {
+          "id": "travelling_03",
+          "arabic": "اللَّهُمَّ إِنِّي أَسْأَلُكَ خَيْرَ هَذِهِ الْقَرْيَةِ وَخَيْرَ أَهْلِهَا وَخَيْرَ مَا فِيهَا، وَأَعُوذُ بِكَ مِنْ شَرِّهَا وَشَرِّ أَهْلِهَا وَشَرِّ مَا فِيهَا",
+          "translation": "O Allah, I ask You for the good of this town, the good of its people, and the good of what is in it. And I seek refuge in You from its evil, the evil of its people, and the evil of what is in it.",
+          "reference": "Mustadrak al-Hakim · 2534",
+          "repetitions": 1,
+          "benefit": "The Prophet ﷺ instructed that this be said upon arriving at any new town or place. It is a comprehensive dua for safety, benefit, and protection from the harms of any new environment the traveller enters."
+        },
+        {
+          "id": "travelling_04",
+          "arabic": "آيِبُونَ تَائِبُونَ عَابِدُونَ لِرَبِّنَا حَامِدُونَ",
+          "translation": "We are those returning, repenting, worshipping, and praising our Lord.",
+          "reference": "Bukhari · 1797, Muslim · 1342",
+          "repetitions": 1,
+          "benefit": "The Prophet ﷺ would say this when returning from a journey. (Bukhari · 1797). Returning home is seen as an act of worship — coming back to one's family, fulfilling responsibilities, and resuming one's daily ibadah is framed here as returning to Allah in a state of tawbah and praise."
         }
       ]
     }

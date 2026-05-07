@@ -41,13 +41,13 @@ function DuasCategory() {
                 position: "absolute", top: 10, right: 10,
                 fontSize: 10, color: "var(--card)", background: "var(--ink)",
                 padding: "2px 8px", borderRadius: 12, fontWeight: 600
-              }}>×{d.repetition}</span>
+              }}>×{d.repetitions}</span>
 
               <div className="arabic" style={{ fontSize: 22, color: "var(--ink)", paddingRight: 44 }}>
                 {d.arabic}
               </div>
               <div style={{ fontFamily: "var(--font-body)", fontStyle: "italic", fontSize: 13, marginTop: 10, color: "var(--quote)", lineHeight: 1.5 }}>
-                {d.english}
+                {d.translation}
               </div>
               <hr className="hr-dashed" />
               <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
