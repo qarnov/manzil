@@ -1,24 +1,112 @@
-import { createFileRoute } from "@tanstack/react-router";
-import { useState } from "react";
-import { TopBar } from "../components/TopBar";
+import { createFileRoute, Link } from "@tanstack/react-router";
+import { useEffect, useRef, useState } from "react";
 
 export const Route = createFileRoute("/quran/$surahNumber")({ component: Reader });
 
-const ayahs = [
-  { n: 1, ar: "الٓمٓ", en: "Alif, Lam, Meem." },
-  { n: 2, ar: "ذَٰلِكَ الْكِتَابُ لَا رَيْبَ ۛ فِيهِ ۛ هُدًى لِّلْمُتَّقِينَ", en: "This is the Book about which there is no doubt, a guidance for those conscious of Allah." },
-  { n: 3, ar: "الَّذِينَ يُؤْمِنُونَ بِالْغَيْبِ وَيُقِيمُونَ الصَّلَاةَ وَمِمَّا رَزَقْنَاهُمْ يُنفِقُونَ", en: "Who believe in the unseen, establish prayer, and spend out of what We have provided for them." },
-];
+type Ayah = { number: number; numberInSurah: number; text: string; audio?: string };
+type SurahInfo = { number: number; name: string; englishName: string; numberOfAyahs: number };
+type TafsirAyah = { verse_key: string; text: string };
+
+function useTilawah(surahNumber: string) {
+  const [info, setInfo] = useState<SurahInfo | null>(null);
+  const [ayahs, setAyahs] = useState<Ayah[]>([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState<string | null>(null);
+
+  const load = () => {
+    setLoading(true);
+    setError(null);
+    fetch(`https://api.alquran.cloud/v1/surah/${surahNumber}/ar.alafasy`)
+      .then((r) => r.json())
+      .then((j) => {
+        const d = j.data;
+        setInfo({
+          number: d.number, name: d.name,
+          englishName: d.englishName, numberOfAyahs: d.numberOfAyahs,
+        });
+        setAyahs(d.ayahs);
+        setLoading(false);
+      })
+      .catch((e) => { setError(String(e?.message || e)); setLoading(false); });
+  };
+  useEffect(load, [surahNumber]);
+  return { info, ayahs, loading, error, retry: load };
+}
+
+function useTafseer(surahNumber: string, enabled: boolean) {
+  const [items, setItems] = useState<TafsirAyah[]>([]);
+  const [arabicAyahs, setArabicAyahs] = useState<Ayah[]>([]);
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState<string | null>(null);
+
+  const load = () => {
+    setLoading(true);
+    setError(null);
+    Promise.all([
+      fetch(`https://api.quran.com/api/v4/tafsirs/169/by_chapter/${surahNumber}`).then((r) => r.json()),
+      fetch(`https://api.alquran.cloud/v1/surah/${surahNumber}/quran-uthmani`).then((r) => r.json()),
+    ])
+      .then(([tjson, ajson]) => {
+        setItems(tjson?.tafsirs || []);
+        setArabicAyahs(ajson?.data?.ayahs || []);
+        setLoading(false);
+      })
+      .catch((e) => { setError(String(e?.message || e)); setLoading(false); });
+  };
+  useEffect(() => { if (enabled) load(); }, [surahNumber, enabled]);
+  return { items, arabicAyahs, loading, error, retry: load };
+}
 
 function Reader() {
+  const { surahNumber } = Route.useParams();
   const [tab, setTab] = useState<"tilawah" | "tafseer">("tilawah");
-  const [src, setSrc] = useState("Ibn Kathir");
+
+  const tilawah = useTilawah(surahNumber);
+  const tafseer = useTafseer(surahNumber, tab === "tafseer");
+
+  // Audio player
+  const audioRef = useRef<HTMLAudioElement | null>(null);
+  const [currentIdx, setCurrentIdx] = useState(0);
+  const [playing, setPlaying] = useState(false);
+  const [progress, setProgress] = useState(0);
+
+  useEffect(() => {
+    const a = audioRef.current;
+    if (!a) return;
+    const onTime = () => setProgress(a.duration ? (a.currentTime / a.duration) * 100 : 0);
+    const onEnded = () => {
+      setCurrentIdx((i) => {
+        const next = i + 1;
+        if (next < tilawah.ayahs.length) {
+          setTimeout(() => { a.play().catch(() => {}); }, 50);
+          return next;
+        }
+        setPlaying(false);
+        return i;
+      });
+    };
+    a.addEventListener("timeupdate", onTime);
+    a.addEventListener("ended", onEnded);
+    return () => { a.removeEventListener("timeupdate", onTime); a.removeEventListener("ended", onEnded); };
+  }, [tilawah.ayahs.length]);
+
+  const togglePlay = () => {
+    const a = audioRef.current;
+    if (!a) return;
+    if (playing) { a.pause(); setPlaying(false); }
+    else { a.play().then(() => setPlaying(true)).catch(() => {}); }
+  };
+
+  const currentAudio = tilawah.ayahs[currentIdx]?.audio;
+
   return (
     <>
       <header className="topbar">
         <div style={{ display: "flex", alignItems: "center", gap: 8 }}>
           <button className="back" onClick={() => history.back()} style={{ color: "var(--gold)", fontSize: 20 }}>‹</button>
-          <h1 style={{ fontFamily: "var(--font-arabic)", fontSize: 20 }}>Al-Baqarah</h1>
+          <h1 style={{ fontFamily: "var(--font-arabic)", fontSize: 20 }}>
+            {tilawah.info?.englishName || `Surah ${surahNumber}`}
+          </h1>
         </div>
         <div className="icons"><span>📑</span><span>🔖</span></div>
       </header>
@@ -34,73 +122,128 @@ function Reader() {
         ))}
       </div>
 
-      {tab === "tilawah" ? (
-        <div className="card" style={{ paddingBottom: 110 }}>
-          <div className="arabic" style={{ fontSize: 20, textAlign: "center", marginBottom: 14 }}>
-            بِسْمِ اللَّهِ الرَّحْمَٰنِ الرَّحِيمِ
-          </div>
-          {ayahs.map((a, i) => (
-            <div key={a.n}>
-              <div style={{ display: "flex", alignItems: "flex-start", gap: 10, padding: "10px 0" }}>
-                <div style={{
-                  width: 22, height: 22, borderRadius: "50%",
-                  border: "1px solid var(--gold)", flexShrink: 0,
-                  display: "flex", alignItems: "center", justifyContent: "center",
-                  fontSize: 10, fontFamily: "var(--font-mono)", marginTop: 4
-                }}>{a.n}</div>
-                <div style={{ flex: 1 }}>
-                  <div className="arabic" style={{ fontSize: 18 }}>{a.ar}</div>
-                  <div style={{ fontStyle: "italic", fontSize: 11, color: "var(--quote)", marginTop: 6 }}>{a.en}</div>
-                </div>
+      {tab === "tilawah" && (
+        <>
+          {tilawah.loading && <Skeleton />}
+          {tilawah.error && !tilawah.loading && <ErrorBox onRetry={tilawah.retry} />}
+          {!tilawah.loading && !tilawah.error && (
+            <div className="card" style={{ paddingBottom: 110 }}>
+              <div className="arabic" style={{ fontSize: 20, textAlign: "center", marginBottom: 14 }}>
+                بِسْمِ اللَّهِ الرَّحْمَٰنِ الرَّحِيمِ
               </div>
-              {i < ayahs.length - 1 && <hr className="hr-dashed" />}
+              {tilawah.ayahs.map((a, i) => (
+                <div key={a.number}>
+                  <div
+                    onClick={() => { setCurrentIdx(i); setTimeout(() => audioRef.current?.play().then(() => setPlaying(true)).catch(() => {}), 50); }}
+                    style={{
+                      display: "flex", alignItems: "flex-start", gap: 10, padding: "10px 0",
+                      background: i === currentIdx && playing ? "var(--card-dark)" : "transparent",
+                      borderRadius: 6,
+                    }}
+                  >
+                    <div style={{
+                      width: 22, height: 22, borderRadius: "50%",
+                      border: "1px solid var(--gold)", flexShrink: 0,
+                      display: "flex", alignItems: "center", justifyContent: "center",
+                      fontSize: 10, fontFamily: "var(--font-mono)", marginTop: 4
+                    }}>{a.numberInSurah}</div>
+                    <div style={{ flex: 1 }}>
+                      <div className="arabic" style={{ fontSize: 18 }}>{a.text}</div>
+                    </div>
+                  </div>
+                  {i < tilawah.ayahs.length - 1 && <hr className="hr-dashed" />}
+                </div>
+              ))}
             </div>
-          ))}
-        </div>
-      ) : (
-        <div style={{ padding: "0 16px 110px" }}>
-          <div style={{ background: "var(--card-dark)", border: "2px solid var(--ink)", borderRadius: 12, padding: 14 }}>
-            <div className="arabic" style={{ fontSize: 18 }}>{ayahs[1].ar}</div>
-            <div style={{ fontStyle: "italic", fontSize: 11, color: "var(--quote)", marginTop: 6 }}>{ayahs[1].en}</div>
-            <div className="mono" style={{ fontSize: 9, color: "var(--gold)", marginTop: 6 }}>AL-BAQARAH 2:2</div>
-          </div>
-          <div style={{ display: "flex", gap: 8, margin: "14px 0" }}>
-            {["Ibn Kathir", "Al-Jalalayn", "Maarif"].map((s) => (
-              <button key={s} onClick={() => setSrc(s)} style={{
-                padding: "6px 12px", borderRadius: 20,
-                background: src === s ? "var(--ink)" : "var(--card)",
-                color: src === s ? "var(--card)" : "var(--ink)",
-                border: "1px solid var(--border)", fontSize: 11
-              }}>{s}</button>
-            ))}
-          </div>
-          <div style={{ fontSize: 11, lineHeight: 1.7 }}>
-            This verse affirms that the Qur'an is a guidance free of any doubt for those who possess taqwa — God-consciousness. The mufassirun explain that the Book itself testifies to its own truth, and only those whose hearts are open to guidance will benefit.
-          </div>
-        </div>
+          )}
+        </>
       )}
 
-      {tab === "tilawah" && (
-        <div style={{
-          position: "fixed", bottom: 72, left: "50%", transform: "translateX(-50%)",
-          width: "100%", maxWidth: 366, margin: "0 12px",
-          background: "var(--ink)", color: "var(--card)", borderRadius: 12,
-          padding: "10px 12px", display: "flex", alignItems: "center", gap: 10, zIndex: 40
-        }}>
-          <button style={{
-            width: 36, height: 36, borderRadius: "50%",
-            background: "var(--page-bg)", color: "var(--ink)", fontSize: 14
-          }}>▶</button>
-          <div style={{ flex: 1, minWidth: 0 }}>
-            <div className="mono" style={{ fontSize: 9, color: "var(--gold)" }}>ABDUL RAHMAN AL-SUDAIS</div>
-            <div style={{ height: 4, background: "var(--gold)", opacity: 0.3, borderRadius: 2, marginTop: 4 }}>
-              <div style={{ width: "30%", height: "100%", background: "var(--gold)", borderRadius: 2 }} />
+      {tab === "tafseer" && (
+        <>
+          {tafseer.loading && <Skeleton />}
+          {tafseer.error && !tafseer.loading && <ErrorBox onRetry={tafseer.retry} />}
+          {!tafseer.loading && !tafseer.error && (
+            <div style={{ padding: "0 16px 110px", display: "flex", flexDirection: "column", gap: 12 }}>
+              <div className="mono" style={{ fontSize: 9, color: "var(--gold)" }}>TAFSIR IBN KATHIR · ENGLISH</div>
+              {tafseer.items.map((it, i) => {
+                const ar = tafseer.arabicAyahs[i];
+                return (
+                  <div key={it.verse_key} style={{
+                    background: "var(--card-dark)", border: "1px solid var(--border)",
+                    borderRadius: 12, padding: 14
+                  }}>
+                    {ar && <div className="arabic" style={{ fontSize: 18 }}>{ar.text}</div>}
+                    <div className="mono" style={{ fontSize: 9, color: "var(--gold)", marginTop: 6 }}>
+                      {it.verse_key}
+                    </div>
+                    <hr className="hr-dashed" />
+                    <div
+                      style={{ fontSize: 12, lineHeight: 1.7, color: "var(--ink)" }}
+                      dangerouslySetInnerHTML={{ __html: it.text }}
+                    />
+                  </div>
+                );
+              })}
             </div>
-            <div className="mono" style={{ fontSize: 9, marginTop: 3 }}>1:23 / 4:10</div>
+          )}
+        </>
+      )}
+
+      {tab === "tilawah" && currentAudio && (
+        <>
+          <audio ref={audioRef} src={currentAudio} preload="auto" />
+          <div style={{
+            position: "fixed", bottom: 72, left: "50%", transform: "translateX(-50%)",
+            width: "100%", maxWidth: 366, margin: "0 12px",
+            background: "var(--ink)", color: "var(--card)", borderRadius: 12,
+            padding: "10px 12px", display: "flex", alignItems: "center", gap: 10, zIndex: 40
+          }}>
+            <button onClick={togglePlay} style={{
+              width: 36, height: 36, borderRadius: "50%",
+              background: "var(--page-bg)", color: "var(--ink)", fontSize: 14
+            }}>{playing ? "⏸" : "▶"}</button>
+            <div style={{ flex: 1, minWidth: 0 }}>
+              <div className="mono" style={{ fontSize: 9, color: "var(--gold)" }}>
+                MISHARY ALAFASY · AYAH {currentIdx + 1}/{tilawah.ayahs.length}
+              </div>
+              <div style={{ height: 4, background: "var(--gold)", opacity: 0.3, borderRadius: 2, marginTop: 4 }}>
+                <div style={{ width: `${progress}%`, height: "100%", background: "var(--gold)", borderRadius: 2 }} />
+              </div>
+            </div>
+            <button onClick={() => {
+              const next = Math.min(currentIdx + 1, tilawah.ayahs.length - 1);
+              setCurrentIdx(next);
+              setTimeout(() => audioRef.current?.play().then(() => setPlaying(true)).catch(() => {}), 50);
+            }} style={{ color: "var(--gold)", fontSize: 18 }}>⏭</button>
           </div>
-          <button style={{ color: "var(--gold)", fontSize: 18 }}>⏭</button>
-        </div>
+        </>
       )}
     </>
+  );
+}
+
+function Skeleton() {
+  return (
+    <div className="card">
+      {Array.from({ length: 6 }).map((_, i) => (
+        <div key={i} style={{ padding: "10px 0" }}>
+          <div style={{ height: 16, background: "var(--card-dark)", borderRadius: 4, width: "90%" }} />
+          <div style={{ height: 10, background: "var(--card-dark)", borderRadius: 4, width: "70%", marginTop: 6 }} />
+        </div>
+      ))}
+    </div>
+  );
+}
+
+function ErrorBox({ onRetry }: { onRetry: () => void }) {
+  return (
+    <div style={{ margin: "0 16px", padding: 14, textAlign: "center" }}>
+      <div className="mono" style={{ fontSize: 11, color: "var(--quote)" }}>Failed to load. Check your connection.</div>
+      <button onClick={onRetry} className="mono" style={{
+        marginTop: 10, fontSize: 12, color: "var(--card)",
+        background: "var(--ink)", padding: "8px 16px", borderRadius: 20
+      }}>Retry</button>
+    </div>
   );
 }

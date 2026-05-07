@@ -1,4 +1,5 @@
-import { Outlet, createRootRoute, HeadContent, Scripts } from "@tanstack/react-router";
+import { Outlet, createRootRoute, HeadContent, Scripts, useLocation, useNavigate } from "@tanstack/react-router";
+import { useEffect } from "react";
 import { BottomNav } from "../components/BottomNav";
 import appCss from "../styles.css?url";
 
@@ -41,6 +42,26 @@ function RootShell({ children }: { children: React.ReactNode }) {
 }
 
 function RootComponent() {
+  const { pathname } = useLocation();
+  const navigate = useNavigate();
+  const isOnboarding = pathname === "/onboarding";
+
+  useEffect(() => {
+    if (typeof window === "undefined") return;
+    const onboarded = localStorage.getItem("manzil_onboarded") === "true";
+    if (!onboarded && !isOnboarding) {
+      navigate({ to: "/onboarding", replace: true });
+    }
+  }, [isOnboarding, navigate]);
+
+  if (isOnboarding) {
+    return (
+      <div className="app-shell" style={{ paddingBottom: 0 }}>
+        <Outlet />
+      </div>
+    );
+  }
+
   return (
     <div className="app-shell">
       <Outlet />

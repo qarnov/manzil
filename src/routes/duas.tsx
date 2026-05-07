@@ -1,20 +1,11 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { TopBar } from "../components/TopBar";
+import duasData from "../data/duas.json";
 
 export const Route = createFileRoute("/duas")({ component: Duas });
 
-const categories = [
-  { slug: "morning", emoji: "🌅", name: "Morning Duas", count: 12 },
-  { slug: "evening", emoji: "🌆", name: "Evening Duas", count: 12 },
-  { slug: "bathroom", emoji: "🚿", name: "Bathroom", count: 3 },
-  { slug: "masjid", emoji: "🕌", name: "Masjid", count: 6 },
-  { slug: "after-prayer", emoji: "🤲", name: "After Prayer", count: 8 },
-  { slug: "eating", emoji: "🍽️", name: "Eating", count: 4 },
-  { slug: "sleeping", emoji: "🌙", name: "Sleeping", count: 5 },
-  { slug: "travelling", emoji: "✈️", name: "Travelling", count: 4 },
-];
-
 function Duas() {
+  const categories = duasData.categories;
   return (
     <>
       <TopBar title="Duas" />
@@ -40,14 +31,14 @@ function Duas() {
       <div className="label-mono">CATEGORIES</div>
       <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 12, margin: "0 16px" }}>
         {categories.map((c) => (
-          <Link key={c.slug} to="/duas/$category" params={{ category: c.slug }} style={{
+          <Link key={c.id} to="/duas/$category" params={{ category: c.id }} style={{
             background: "var(--card-dark)", border: "2px solid var(--ink)",
             borderRadius: 14, padding: 14, display: "flex", flexDirection: "column", gap: 6,
             minHeight: 100
           }}>
             <span style={{ fontSize: 26 }}>{c.emoji}</span>
             <span style={{ fontSize: 12, fontWeight: 700 }}>{c.name}</span>
-            <span className="mono" style={{ fontSize: 9, color: "var(--muted)" }}>{c.count} DUAS</span>
+            <span className="mono" style={{ fontSize: 9, color: "var(--muted)" }}>{c.duas.length} DUAS</span>
           </Link>
         ))}
       </div>
