@@ -15,6 +15,7 @@ import { Route as QuranRouteImport } from './routes/quran'
 import { Route as QiblaRouteImport } from './routes/qibla'
 import { Route as PrayerSettingsRouteImport } from './routes/prayer-settings'
 import { Route as PrayerRouteImport } from './routes/prayer'
+import { Route as OnboardingRouteImport } from './routes/onboarding'
 import { Route as MoreRouteImport } from './routes/more'
 import { Route as HijriRouteImport } from './routes/hijri'
 import { Route as DuasRouteImport } from './routes/duas'
@@ -50,6 +51,11 @@ const PrayerSettingsRoute = PrayerSettingsRouteImport.update({
 const PrayerRoute = PrayerRouteImport.update({
   id: '/prayer',
   path: '/prayer',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const OnboardingRoute = OnboardingRouteImport.update({
+  id: '/onboarding',
+  path: '/onboarding',
   getParentRoute: () => rootRouteImport,
 } as any)
 const MoreRoute = MoreRouteImport.update({
@@ -88,6 +94,7 @@ export interface FileRoutesByFullPath {
   '/duas': typeof DuasRouteWithChildren
   '/hijri': typeof HijriRoute
   '/more': typeof MoreRoute
+  '/onboarding': typeof OnboardingRoute
   '/prayer': typeof PrayerRoute
   '/prayer-settings': typeof PrayerSettingsRoute
   '/qibla': typeof QiblaRoute
@@ -102,6 +109,7 @@ export interface FileRoutesByTo {
   '/duas': typeof DuasRouteWithChildren
   '/hijri': typeof HijriRoute
   '/more': typeof MoreRoute
+  '/onboarding': typeof OnboardingRoute
   '/prayer': typeof PrayerRoute
   '/prayer-settings': typeof PrayerSettingsRoute
   '/qibla': typeof QiblaRoute
@@ -117,6 +125,7 @@ export interface FileRoutesById {
   '/duas': typeof DuasRouteWithChildren
   '/hijri': typeof HijriRoute
   '/more': typeof MoreRoute
+  '/onboarding': typeof OnboardingRoute
   '/prayer': typeof PrayerRoute
   '/prayer-settings': typeof PrayerSettingsRoute
   '/qibla': typeof QiblaRoute
@@ -133,6 +142,7 @@ export interface FileRouteTypes {
     | '/duas'
     | '/hijri'
     | '/more'
+    | '/onboarding'
     | '/prayer'
     | '/prayer-settings'
     | '/qibla'
@@ -147,6 +157,7 @@ export interface FileRouteTypes {
     | '/duas'
     | '/hijri'
     | '/more'
+    | '/onboarding'
     | '/prayer'
     | '/prayer-settings'
     | '/qibla'
@@ -161,6 +172,7 @@ export interface FileRouteTypes {
     | '/duas'
     | '/hijri'
     | '/more'
+    | '/onboarding'
     | '/prayer'
     | '/prayer-settings'
     | '/qibla'
@@ -176,6 +188,7 @@ export interface RootRouteChildren {
   DuasRoute: typeof DuasRouteWithChildren
   HijriRoute: typeof HijriRoute
   MoreRoute: typeof MoreRoute
+  OnboardingRoute: typeof OnboardingRoute
   PrayerRoute: typeof PrayerRoute
   PrayerSettingsRoute: typeof PrayerSettingsRoute
   QiblaRoute: typeof QiblaRoute
@@ -226,6 +239,13 @@ declare module '@tanstack/react-router' {
       path: '/prayer'
       fullPath: '/prayer'
       preLoaderRoute: typeof PrayerRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/onboarding': {
+      id: '/onboarding'
+      path: '/onboarding'
+      fullPath: '/onboarding'
+      preLoaderRoute: typeof OnboardingRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/more': {
@@ -298,6 +318,7 @@ const rootRouteChildren: RootRouteChildren = {
   DuasRoute: DuasRouteWithChildren,
   HijriRoute: HijriRoute,
   MoreRoute: MoreRoute,
+  OnboardingRoute: OnboardingRoute,
   PrayerRoute: PrayerRoute,
   PrayerSettingsRoute: PrayerSettingsRoute,
   QiblaRoute: QiblaRoute,
