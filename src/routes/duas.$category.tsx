@@ -1,56 +1,81 @@
 import { createFileRoute } from "@tanstack/react-router";
+import { useState } from "react";
 import { TopBar } from "../components/TopBar";
+import duasData from "../data/duas.json";
 
 export const Route = createFileRoute("/duas/$category")({ component: DuasCategory });
 
-const duas = [
-  {
-    arabic: "أَصْبَحْنَا وَأَصْبَحَ الْمُلْكُ لِلَّهِ، وَالْحَمْدُ لِلَّهِ",
-    en: "We have entered the morning and the dominion belongs to Allah, all praise is for Allah.",
-    src: "Muslim 2723",
-  },
-  {
-    arabic: "اللَّهُمَّ بِكَ أَصْبَحْنَا وَبِكَ أَمْسَيْنَا",
-    en: "O Allah, by You we enter the morning and by You we enter the evening.",
-    src: "Tirmidhi 3391",
-  },
-  {
-    arabic: "حَسْبِيَ اللَّهُ لاَ إِلَهَ إِلاَّ هُوَ عَلَيْهِ تَوَكَّلْتُ",
-    en: "Allah is sufficient for me, there is no god but Him, in Him I place my trust.",
-    src: "Abu Dawud 5081",
-  },
-];
-
 function DuasCategory() {
   const { category } = Route.useParams();
-  const name = category.replace(/-/g, " ").replace(/\b\w/g, (c: string) => c.toUpperCase());
+  const cat = duasData.categories.find((c) => c.id === category);
+  const [openIdx, setOpenIdx] = useState<number | null>(null);
+
+  if (!cat) {
+    return (
+      <>
+        <TopBar title="Not found" back />
+        <div style={{ padding: 24 }} className="mono">Category not found.</div>
+      </>
+    );
+  }
+
   return (
     <>
-      <TopBar title={`${name} 🌅`} back />
+      <TopBar title={`${cat.name} ${cat.emoji}`} back />
       <div style={{ padding: "8px 18px 14px" }} className="mono">
-        <span style={{ fontSize: 9, color: "var(--muted)" }}>{duas.length} DUAS · RECITE AFTER FAJR</span>
+        <span style={{ fontSize: 9, color: "var(--muted)" }}>
+          {cat.duas.length} DUAS
+        </span>
       </div>
 
       <div style={{ display: "flex", flexDirection: "column", gap: 12, padding: "0 16px" }}>
-        {duas.map((d, i) => (
-          <div key={i} style={{
-            background: "var(--card-dark)", border: "1px solid var(--border)",
-            borderRadius: 12, padding: 14
-          }}>
-            <div className="arabic" style={{ fontSize: 16, color: "var(--ink)" }}>{d.arabic}</div>
-            <div style={{ fontStyle: "italic", fontSize: 11, marginTop: 8, color: "var(--quote)" }}>
-              {d.en}
-            </div>
-            <hr className="hr-dashed" />
-            <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
-              <span className="mono" style={{ fontSize: 9, color: "var(--gold)" }}>{d.src}</span>
-              <div style={{ display: "flex", gap: 10 }}>
-                <button className="mono" style={{ fontSize: 11, color: "var(--ink)" }}>🔊 Play</button>
-                <button className="mono" style={{ fontSize: 11, color: "var(--ink)" }}>📋 Copy</button>
+        {cat.duas.map((d, i) => {
+          const isOpen = openIdx === i;
+          return (
+            <div key={i} style={{
+              position: "relative",
+              background: "var(--card-dark)", border: "1px solid var(--border)",
+              borderRadius: 12, padding: 14
+            }}>
+              <span className="mono" style={{
+                position: "absolute", top: 10, right: 10,
+                fontSize: 10, color: "var(--card)", background: "var(--ink)",
+                padding: "2px 8px", borderRadius: 12, fontWeight: 600
+              }}>×{d.repetition}</span>
+
+              <div className="arabic" style={{ fontSize: 22, color: "var(--ink)", paddingRight: 44 }}>
+                {d.arabic}
               </div>
+              <div style={{ fontFamily: "var(--font-body)", fontStyle: "italic", fontSize: 13, marginTop: 10, color: "var(--quote)", lineHeight: 1.5 }}>
+                {d.english}
+              </div>
+              <hr className="hr-dashed" />
+              <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
+                <span className="mono" style={{ fontSize: 9, color: "var(--gold)" }}>{d.reference}</span>
+                <button
+                  onClick={() => setOpenIdx(isOpen ? null : i)}
+                  className="mono"
+                  style={{
+                    fontSize: 10, color: "var(--ink)",
+                    border: "1px solid var(--border)",
+                    padding: "4px 10px", borderRadius: 12,
+                  }}
+                >
+                  {isOpen ? "Hide Benefit ▲" : "Benefit ▼"}
+                </button>
+              </div>
+              {isOpen && (
+                <div style={{
+                  marginTop: 10, padding: 10,
+                  background: "var(--card)", border: "1px dashed var(--border)",
+                  borderRadius: 8, fontSize: 12, lineHeight: 1.5, color: "var(--ink)"
+                }}>
+                  {d.benefit}
+                </div>
+              )}
             </div>
-          </div>
-        ))}
+          );
+        })}
       </div>
       <div style={{ height: 24 }} />
     </>

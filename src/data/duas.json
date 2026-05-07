@@ -1,0 +1,207 @@
+{
+  "categories": [
+    {
+      "id": "morning",
+      "emoji": "🌅",
+      "name": "Morning Duas",
+      "duas": [
+        {
+          "arabic": "أَصْبَحْنَا وَأَصْبَحَ الْمُلْكُ لِلَّهِ، وَالْحَمْدُ لِلَّهِ، لَا إِلَهَ إِلَّا اللَّهُ وَحْدَهُ لَا شَرِيكَ لَهُ",
+          "english": "We have entered the morning and the dominion belongs to Allah. All praise is for Allah. There is no god but Allah alone, with no partner.",
+          "reference": "Muslim · 2723",
+          "repetition": 1,
+          "benefit": "Acknowledges Allah's sovereignty at the start of the day and is a powerful protection against shirk."
+        },
+        {
+          "arabic": "اللَّهُمَّ بِكَ أَصْبَحْنَا، وَبِكَ أَمْسَيْنَا، وَبِكَ نَحْيَا، وَبِكَ نَمُوتُ، وَإِلَيْكَ النُّشُورُ",
+          "english": "O Allah, by You we enter the morning and the evening, by You we live and die, and to You is the resurrection.",
+          "reference": "Tirmidhi · 3391",
+          "repetition": 1,
+          "benefit": "A reminder that every breath of the day depends on Allah."
+        },
+        {
+          "arabic": "حَسْبِيَ اللَّهُ لَا إِلَهَ إِلَّا هُوَ عَلَيْهِ تَوَكَّلْتُ وَهُوَ رَبُّ الْعَرْشِ الْعَظِيمِ",
+          "english": "Allah is sufficient for me. There is no god but Him. Upon Him I rely, and He is the Lord of the Mighty Throne.",
+          "reference": "Abu Dawud · 5081",
+          "repetition": 7,
+          "benefit": "Whoever recites this seven times morning and evening, Allah will suffice him for whatever worries him."
+        },
+        {
+          "arabic": "بِسْمِ اللَّهِ الَّذِي لَا يَضُرُّ مَعَ اسْمِهِ شَيْءٌ فِي الْأَرْضِ وَلَا فِي السَّمَاءِ وَهُوَ السَّمِيعُ الْعَلِيمُ",
+          "english": "In the name of Allah, with whose name nothing on earth or in the heavens can cause harm. He is the All-Hearing, the All-Knowing.",
+          "reference": "Abu Dawud · 5088",
+          "repetition": 3,
+          "benefit": "Whoever says this three times will not be afflicted by any sudden calamity until evening."
+        }
+      ]
+    },
+    {
+      "id": "evening",
+      "emoji": "🌆",
+      "name": "Evening Duas",
+      "duas": [
+        {
+          "arabic": "أَمْسَيْنَا وَأَمْسَى الْمُلْكُ لِلَّهِ، وَالْحَمْدُ لِلَّهِ",
+          "english": "We have entered the evening and the dominion belongs to Allah. All praise is for Allah.",
+          "reference": "Muslim · 2723",
+          "repetition": 1,
+          "benefit": "An evening counterpart to the morning remembrance — affirms Allah's dominion."
+        },
+        {
+          "arabic": "اللَّهُمَّ مَا أَمْسَى بِي مِنْ نِعْمَةٍ أَوْ بِأَحَدٍ مِنْ خَلْقِكَ فَمِنْكَ وَحْدَكَ لَا شَرِيكَ لَكَ",
+          "english": "O Allah, whatever blessing has come to me or any of Your creation this evening is from You alone, with no partner.",
+          "reference": "Abu Dawud · 5073",
+          "repetition": 1,
+          "benefit": "Whoever says this in the evening has fulfilled the gratitude due that night."
+        },
+        {
+          "arabic": "أَعُوذُ بِكَلِمَاتِ اللَّهِ التَّامَّاتِ مِنْ شَرِّ مَا خَلَقَ",
+          "english": "I seek refuge in the perfect words of Allah from the evil of what He has created.",
+          "reference": "Muslim · 2708",
+          "repetition": 3,
+          "benefit": "Whoever says this three times in the evening will not be harmed by anything that night."
+        }
+      ]
+    },
+    {
+      "id": "bathroom",
+      "emoji": "🚿",
+      "name": "Bathroom",
+      "duas": [
+        {
+          "arabic": "بِسْمِ اللَّهِ، اللَّهُمَّ إِنِّي أَعُوذُ بِكَ مِنَ الْخُبُثِ وَالْخَبَائِثِ",
+          "english": "In the name of Allah. O Allah, I seek refuge in You from male and female evil beings.",
+          "reference": "Bukhari · 142",
+          "repetition": 1,
+          "benefit": "Said before entering — protects from evil jinn frequenting impure places."
+        },
+        {
+          "arabic": "غُفْرَانَكَ",
+          "english": "I seek Your forgiveness.",
+          "reference": "Abu Dawud · 30",
+          "repetition": 1,
+          "benefit": "Said upon leaving the bathroom — gratitude for the relief Allah granted."
+        }
+      ]
+    },
+    {
+      "id": "masjid",
+      "emoji": "🕌",
+      "name": "Masjid",
+      "duas": [
+        {
+          "arabic": "اللَّهُمَّ افْتَحْ لِي أَبْوَابَ رَحْمَتِكَ",
+          "english": "O Allah, open for me the doors of Your mercy.",
+          "reference": "Muslim · 713",
+          "repetition": 1,
+          "benefit": "Said when entering the masjid with the right foot first."
+        },
+        {
+          "arabic": "اللَّهُمَّ إِنِّي أَسْأَلُكَ مِنْ فَضْلِكَ",
+          "english": "O Allah, I ask You from Your bounty.",
+          "reference": "Muslim · 713",
+          "repetition": 1,
+          "benefit": "Said upon leaving the masjid with the left foot first."
+        }
+      ]
+    },
+    {
+      "id": "after-prayer",
+      "emoji": "🤲",
+      "name": "After Prayer",
+      "duas": [
+        {
+          "arabic": "أَسْتَغْفِرُ اللَّهَ",
+          "english": "I seek the forgiveness of Allah.",
+          "reference": "Muslim · 591",
+          "repetition": 3,
+          "benefit": "Recited three times after every fard prayer."
+        },
+        {
+          "arabic": "سُبْحَانَ اللَّهِ",
+          "english": "Glory be to Allah.",
+          "reference": "Muslim · 597",
+          "repetition": 33,
+          "benefit": "Part of the Tasbih Fatimah — wipes away sins even if as much as the foam of the sea."
+        },
+        {
+          "arabic": "الْحَمْدُ لِلَّهِ",
+          "english": "All praise is for Allah.",
+          "reference": "Muslim · 597",
+          "repetition": 33,
+          "benefit": "Recited 33 times after every fard prayer."
+        },
+        {
+          "arabic": "اللَّهُ أَكْبَرُ",
+          "english": "Allah is the Greatest.",
+          "reference": "Muslim · 597",
+          "repetition": 34,
+          "benefit": "Completes the Tasbih Fatimah after every fard prayer."
+        }
+      ]
+    },
+    {
+      "id": "eating",
+      "emoji": "🍽️",
+      "name": "Eating",
+      "duas": [
+        {
+          "arabic": "بِسْمِ اللَّهِ",
+          "english": "In the name of Allah.",
+          "reference": "Abu Dawud · 3767",
+          "repetition": 1,
+          "benefit": "Said before eating — invites barakah into the meal."
+        },
+        {
+          "arabic": "الْحَمْدُ لِلَّهِ الَّذِي أَطْعَمَنِي هَذَا وَرَزَقَنِيهِ مِنْ غَيْرِ حَوْلٍ مِنِّي وَلَا قُوَّةٍ",
+          "english": "All praise is for Allah who fed me this and provided it without any might or power from me.",
+          "reference": "Tirmidhi · 3458",
+          "repetition": 1,
+          "benefit": "Said after eating — past sins are forgiven."
+        }
+      ]
+    },
+    {
+      "id": "sleeping",
+      "emoji": "🌙",
+      "name": "Sleeping",
+      "duas": [
+        {
+          "arabic": "بِاسْمِكَ اللَّهُمَّ أَمُوتُ وَأَحْيَا",
+          "english": "In Your name, O Allah, I die and I live.",
+          "reference": "Bukhari · 6324",
+          "repetition": 1,
+          "benefit": "Said when going to sleep — places trust in Allah for the night."
+        },
+        {
+          "arabic": "سُبْحَانَ اللَّهِ، وَالْحَمْدُ لِلَّهِ، وَاللَّهُ أَكْبَرُ",
+          "english": "Glory to Allah, all praise is to Allah, and Allah is the Greatest.",
+          "reference": "Bukhari · 6318",
+          "repetition": 33,
+          "benefit": "Taught by the Prophet ﷺ to Fatimah and Ali — better than a servant."
+        }
+      ]
+    },
+    {
+      "id": "travelling",
+      "emoji": "✈️",
+      "name": "Travelling",
+      "duas": [
+        {
+          "arabic": "سُبْحَانَ الَّذِي سَخَّرَ لَنَا هَذَا وَمَا كُنَّا لَهُ مُقْرِنِينَ، وَإِنَّا إِلَى رَبِّنَا لَمُنْقَلِبُونَ",
+          "english": "Glory to Him who has subjected this to us, and we could never have it by our efforts. Indeed, to our Lord we will return.",
+          "reference": "Muslim · 1342",
+          "repetition": 1,
+          "benefit": "Recited when boarding a vehicle, ship, or plane."
+        },
+        {
+          "arabic": "أَعُوذُ بِكَلِمَاتِ اللَّهِ التَّامَّاتِ مِنْ شَرِّ مَا خَلَقَ",
+          "english": "I seek refuge in the perfect words of Allah from the evil of what He has created.",
+          "reference": "Muslim · 2708",
+          "repetition": 3,
+          "benefit": "Said upon arriving at a new place — protects from harm there."
+        }
+      ]
+    }
+  ]
+}
