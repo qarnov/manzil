@@ -59,7 +59,49 @@ function PrayerSettings() {
                   </button>
                 );
               })}
+              {(() => {
+                const isCustom = !(OFFSET_OPTIONS as readonly number[]).includes(p.offset);
+                return (
+                  <button
+                    onClick={() => setOffset(p.name, isCustom ? p.offset : 25)}
+                    className="mono"
+                    style={{
+                      flex: 1,
+                      padding: "6px 0",
+                      borderRadius: 14,
+                      fontSize: 11,
+                      background: isCustom ? "#3D2B1F" : "transparent",
+                      color: isCustom ? "var(--card)" : "var(--ink)",
+                      border: isCustom ? "1px solid #3D2B1F" : "1px solid var(--border)",
+                    }}
+                  >
+                    Custom
+                  </button>
+                );
+              })()}
             </div>
+            {!(OFFSET_OPTIONS as readonly number[]).includes(p.offset) && (
+              <div style={{ display: "flex", alignItems: "center", gap: 6, marginTop: 8 }}>
+                <input
+                  type="number"
+                  inputMode="numeric"
+                  min={1}
+                  max={60}
+                  value={p.offset}
+                  onChange={(e) => {
+                    const v = Math.max(1, Math.min(60, parseInt(e.target.value || "0", 10) || 0));
+                    setOffset(p.name, v);
+                  }}
+                  className="mono"
+                  style={{
+                    width: 80, padding: "6px 8px", fontSize: 12,
+                    border: "1px solid var(--border)", borderRadius: 8,
+                    background: "var(--card)", color: "var(--ink)",
+                  }}
+                />
+                <span className="mono" style={{ fontSize: 11, color: "var(--muted)" }}>min (max 60)</span>
+              </div>
+            )}
           </div>
         ))}
       </div>
