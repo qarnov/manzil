@@ -1,5 +1,4 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { TopBar } from "../components/TopBar";
 import { usePrayerTimes } from "../lib/prayerTimes";
 
 export const Route = createFileRoute("/")({ component: Home });
