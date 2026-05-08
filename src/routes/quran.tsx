@@ -111,7 +111,7 @@ function Quran() {
               <div style={{ flex: 1 }}>
                 <div style={{ fontSize: 13, fontWeight: 700 }}>{s.englishName}</div>
                 <div className="mono" style={{ fontSize: 9, color: "var(--muted)" }}>
-                  {s.numberOfAyahs} VERSES · {s.revelationType.toUpperCase()}
+                  {s.numberOfAyahs} VERSES
                 </div>
               </div>
               <div className="arabic" style={{ fontSize: 18 }}>{s.name}</div>
