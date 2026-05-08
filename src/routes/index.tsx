@@ -112,19 +112,6 @@ function Home() {
         })}
       </div>
 
-      <div className="label-mono">QUICK ACTIONS</div>
-      <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 12, margin: "0 16px" }}>
-        {actions.map((a) => (
-          <Link key={a.to} to={a.to} style={{
-            background: "var(--card)", border: "1px solid var(--border)",
-            borderRadius: 12, minHeight: 90, display: "flex", flexDirection: "column",
-            alignItems: "center", justifyContent: "center", gap: 6
-          }}>
-            <span style={{ fontSize: 28 }}>{a.emoji}</span>
-            <span style={{ fontSize: 14 }}>{a.label}</span>
-          </Link>
-        ))}
-      </div>
 
       <div style={{ height: 24 }} />
     </>
