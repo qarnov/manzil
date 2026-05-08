@@ -31,23 +31,40 @@ function Home() {
       <div style={{ height: 16 }} />
 
       {/* Ayah of the day */}
-      <div className="card lined">
-        <div className="mono" style={{ fontSize: 9, letterSpacing: 1.5, color: "var(--muted)" }}>AYAH OF THE DAY</div>
-        <hr className="hr" />
-        <div className="arabic" style={{ fontSize: 24, textAlign: "center", color: "var(--ink)" }}>
-          إِنَّ مَعَ الْعُسْرِ يُسْرًا
-        </div>
-        <div className="mono" style={{ fontSize: 9, textAlign: "right", color: "var(--gold)", marginTop: 8 }}>
-          SURAH ASH-SHARH · 94:6
-        </div>
-        <hr className="hr" />
-        <div className="italic-q" style={{ fontSize: 14, textAlign: "center", fontStyle: "italic" }}>
-          "Indeed, with hardship comes ease."
-        </div>
-        <div style={{ textAlign: "right", marginTop: 8 }}>
-          <span className="mono" style={{ fontSize: 11, color: "var(--gold)" }}>Read Tafseer →</span>
-        </div>
-      </div>
+      {(() => {
+        const arabic = "إِنَّ مَعَ الْعُسْرِ يُسْرًا";
+        const english = "Indeed, with hardship comes ease.";
+        const reference = "Surah Ash-Sharh 94:6";
+        const tafseer = "Allah reassures the believers that every difficulty is paired with relief — patience and trust bring ease.";
+        const shareText = `${arabic}\n\n"${english}"\n— ${reference}\n\n${tafseer}\n\nShared via Manzil`;
+        const onShare = () => {
+          window.open(`https://wa.me/?text=${encodeURIComponent(shareText)}`, "_blank");
+        };
+        return (
+          <div className="card" style={{ padding: 18 }}>
+            <div className="mono" style={{ fontSize: 9, letterSpacing: 1.5, color: "var(--muted)" }}>AYAH OF THE DAY</div>
+            <div className="arabic" style={{ fontSize: 26, textAlign: "center", color: "var(--ink)", marginTop: 14, lineHeight: 1.8 }}>
+              {arabic}
+            </div>
+            <div className="mono" style={{ fontSize: 9, textAlign: "right", color: "var(--gold)", marginTop: 10 }}>
+              SURAH ASH-SHARH · 94:6
+            </div>
+            <div className="italic-q" style={{ fontSize: 15, textAlign: "center", fontStyle: "italic", marginTop: 14, lineHeight: 1.6 }}>
+              "{english}"
+            </div>
+            <div style={{ display: "flex", flexDirection: "column", gap: 8, marginTop: 16 }}>
+              <button className="mono" style={{
+                width: "100%", padding: "10px 0", borderRadius: 20, minHeight: 44,
+                background: "var(--ink)", color: "var(--card)", fontSize: 12, border: "none"
+              }}>Read Tafseer →</button>
+              <button onClick={onShare} className="mono" style={{
+                width: "100%", padding: "10px 0", borderRadius: 20, minHeight: 44,
+                background: "#25D366", color: "#fff", fontSize: 12, border: "none"
+              }}>Share on WhatsApp</button>
+            </div>
+          </div>
+        );
+      })()}
 
       {/* Next prayer strip */}
       <div style={{
