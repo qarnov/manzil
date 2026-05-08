@@ -6,13 +6,6 @@ export const Route = createFileRoute("/")({ component: Home });
 
 const ACTIVE_PRAYER = "Asr";
 
-const actions = [
-  { to: "/quran", emoji: "📖", label: "Quran" },
-  { to: "/duas", emoji: "🤲", label: "Duas" },
-  { to: "/tasbih", emoji: "📿", label: "Tasbih" },
-  { to: "/qibla", emoji: "🧭", label: "Qibla" },
-];
-
 function Home() {
   const { prayers } = usePrayerTimes();
   return (
