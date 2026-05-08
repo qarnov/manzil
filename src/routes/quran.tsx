@@ -13,7 +13,7 @@ type Surah = {
 };
 
 function Quran() {
-  const [tab, setTab] = useState<"surah" | "juz" | "bookmarks">("surah");
+  const [tab, setTab] = useState<"tilawah" | "fav" | "tafseer">("tilawah");
   const [surahs, setSurahs] = useState<Surah[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
