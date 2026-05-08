@@ -42,7 +42,7 @@ function Quran() {
       </header>
 
       <div style={{ display: "flex", padding: "12px 16px", gap: 8 }}>
-        {(["surah", "juz", "bookmarks"] as const).map((t) => (
+        {(["tilawah", "fav", "tafseer"] as const).map((t) => (
           <button key={t} onClick={() => setTab(t)} style={{
             flex: 1, padding: "10px 0", borderRadius: 20,
             background: tab === t ? "var(--ink)" : "var(--card)",
