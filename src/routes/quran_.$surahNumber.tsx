@@ -1,7 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useEffect, useRef, useState } from "react";
 
-export const Route = createFileRoute("/quran/$surahNumber")({ component: Reader });
+export const Route = createFileRoute("/quran_/$surahNumber")({ component: Reader });
 
 type Ayah = { number: number; numberInSurah: number; text: string; audio?: string };
 type SurahInfo = { number: number; name: string; englishName: string; numberOfAyahs: number };
@@ -38,9 +38,7 @@ function useTilawah(surahNumber: string) {
     setError(null);
     Promise.all([
       fetch(`https://api.alquran.cloud/v1/surah/${surahNumber}/ar.alafasy`).then((r) => r.json()),
-      fetch(
-        `https://api.quran.com/api/v4/verses/by_chapter/${surahNumber}?translations=131&per_page=300`
-      )
+      fetch(`https://api.alquran.cloud/v1/surah/${surahNumber}/en.sahih`)
         .then((r) => r.json())
         .catch(() => null),
     ])
@@ -53,10 +51,9 @@ function useTilawah(surahNumber: string) {
         setAyahs(d.ayahs);
 
         const map: Record<number, string> = {};
-        const verses = tjson?.verses || [];
-        verses.forEach((v: { verse_number: number; translations?: { text: string }[] }) => {
-          const text = v.translations?.[0]?.text || "";
-          map[v.verse_number] = text.replace(/<[^>]*>/g, "");
+        const verses: { numberInSurah: number; text: string }[] = tjson?.data?.ayahs || [];
+        verses.forEach((v) => {
+          map[v.numberInSurah] = (v.text || "").replace(/<[^>]*>/g, "");
         });
         setTranslations(map);
         setLoading(false);

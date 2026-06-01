@@ -3,7 +3,7 @@ import { useState } from "react";
 import { TopBar } from "../components/TopBar";
 import duasData from "../data/duas.json";
 
-export const Route = createFileRoute("/duas/$category")({ component: DuasCategory });
+export const Route = createFileRoute("/duas_/$category")({ component: DuasCategory });
 
 function DuasCategory() {
   const { category } = Route.useParams();
