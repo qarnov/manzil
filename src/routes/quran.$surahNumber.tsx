@@ -1,4 +1,4 @@
-import { createFileRoute, Link } from "@tanstack/react-router";
+import { createFileRoute } from "@tanstack/react-router";
 import { useEffect, useRef, useState } from "react";
 
 export const Route = createFileRoute("/quran/$surahNumber")({ component: Reader });
@@ -7,30 +7,64 @@ type Ayah = { number: number; numberInSurah: number; text: string; audio?: strin
 type SurahInfo = { number: number; name: string; englishName: string; numberOfAyahs: number };
 type TafsirAyah = { verse_key: string; text: string };
 
+type Favorite = {
+  surah: number;
+  ayah: number;
+  arabic: string;
+  translation: string;
+  surahName: string;
+};
+
+const FAV_KEY = "manzil_favorites";
+const LAST_READ_KEY = "manzil_last_read";
+
+function loadFavorites(): Favorite[] {
+  try {
+    return JSON.parse(localStorage.getItem(FAV_KEY) || "[]");
+  } catch {
+    return [];
+  }
+}
+
 function useTilawah(surahNumber: string) {
   const [info, setInfo] = useState<SurahInfo | null>(null);
   const [ayahs, setAyahs] = useState<Ayah[]>([]);
+  const [translations, setTranslations] = useState<Record<number, string>>({});
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
 
   const load = () => {
     setLoading(true);
     setError(null);
-    fetch(`https://api.alquran.cloud/v1/surah/${surahNumber}/ar.alafasy`)
-      .then((r) => r.json())
-      .then((j) => {
-        const d = j.data;
+    Promise.all([
+      fetch(`https://api.alquran.cloud/v1/surah/${surahNumber}/ar.alafasy`).then((r) => r.json()),
+      fetch(
+        `https://api.quran.com/api/v4/verses/by_chapter/${surahNumber}?translations=131&per_page=300`
+      )
+        .then((r) => r.json())
+        .catch(() => null),
+    ])
+      .then(([ajson, tjson]) => {
+        const d = ajson.data;
         setInfo({
           number: d.number, name: d.name,
           englishName: d.englishName, numberOfAyahs: d.numberOfAyahs,
         });
         setAyahs(d.ayahs);
+
+        const map: Record<number, string> = {};
+        const verses = tjson?.verses || [];
+        verses.forEach((v: { verse_number: number; translations?: { text: string }[] }) => {
+          const text = v.translations?.[0]?.text || "";
+          map[v.verse_number] = text.replace(/<[^>]*>/g, "");
+        });
+        setTranslations(map);
         setLoading(false);
       })
       .catch((e) => { setError(String(e?.message || e)); setLoading(false); });
   };
   useEffect(load, [surahNumber]);
-  return { info, ayahs, loading, error, retry: load };
+  return { info, ayahs, translations, loading, error, retry: load };
 }
 
 function useTafseer(surahNumber: string, enabled: boolean) {
@@ -63,6 +97,47 @@ function Reader() {
 
   const tilawah = useTilawah(surahNumber);
   const tafseer = useTafseer(surahNumber, tab === "tafseer");
+
+  const [favorites, setFavorites] = useState<Favorite[]>([]);
+  useEffect(() => { setFavorites(loadFavorites()); }, []);
+
+  const isFav = (ayahNum: number) =>
+    favorites.some((f) => f.surah === Number(surahNumber) && f.ayah === ayahNum);
+
+  const toggleFav = (a: Ayah) => {
+    setFavorites((prev) => {
+      const exists = prev.some(
+        (f) => f.surah === Number(surahNumber) && f.ayah === a.numberInSurah
+      );
+      const next = exists
+        ? prev.filter(
+            (f) => !(f.surah === Number(surahNumber) && f.ayah === a.numberInSurah)
+          )
+        : [
+            ...prev,
+            {
+              surah: Number(surahNumber),
+              ayah: a.numberInSurah,
+              arabic: a.text,
+              translation: tilawah.translations[a.numberInSurah] || "",
+              surahName: tilawah.info?.englishName || `Surah ${surahNumber}`,
+            },
+          ];
+      localStorage.setItem(FAV_KEY, JSON.stringify(next));
+      return next;
+    });
+  };
+
+  const markLastRead = (ayahNum: number) => {
+    localStorage.setItem(
+      LAST_READ_KEY,
+      JSON.stringify({
+        surah: Number(surahNumber),
+        ayah: ayahNum,
+        surahName: tilawah.info?.englishName || `Surah ${surahNumber}`,
+      })
+    );
+  };
 
   // Audio player
   const audioRef = useRef<HTMLAudioElement | null>(null);
@@ -134,7 +209,11 @@ function Reader() {
               {tilawah.ayahs.map((a, i) => (
                 <div key={a.number}>
                   <div
-                    onClick={() => { setCurrentIdx(i); setTimeout(() => audioRef.current?.play().then(() => setPlaying(true)).catch(() => {}), 50); }}
+                    onClick={() => {
+                      setCurrentIdx(i);
+                      markLastRead(a.numberInSurah);
+                      setTimeout(() => audioRef.current?.play().then(() => setPlaying(true)).catch(() => {}), 50);
+                    }}
                     style={{
                       display: "flex", alignItems: "flex-start", gap: 10, padding: "10px 0",
                       background: i === currentIdx && playing ? "var(--card-dark)" : "transparent",
@@ -147,9 +226,29 @@ function Reader() {
                       display: "flex", alignItems: "center", justifyContent: "center",
                       fontSize: 10, fontFamily: "var(--font-mono)", marginTop: 4
                     }}>{a.numberInSurah}</div>
-                    <div style={{ flex: 1 }}>
+                    <div style={{ flex: 1, minWidth: 0 }}>
                       <div className="arabic" style={{ fontSize: 18 }}>{a.text}</div>
+                      {tilawah.translations[a.numberInSurah] && (
+                        <div style={{
+                          fontStyle: "italic", fontSize: 13,
+                          color: "var(--quote)", lineHeight: 1.6, marginTop: 8
+                        }}>
+                          {tilawah.translations[a.numberInSurah]}
+                        </div>
+                      )}
                     </div>
+                    <button
+                      onClick={(e) => { e.stopPropagation(); toggleFav(a); }}
+                      style={{
+                        flexShrink: 0, marginTop: 2,
+                        minWidth: 32, minHeight: 32,
+                        background: "transparent", border: "none", fontSize: 16,
+                        display: "flex", alignItems: "center", justifyContent: "center",
+                      }}
+                      aria-label={isFav(a.numberInSurah) ? "Remove favourite" : "Add favourite"}
+                    >
+                      {isFav(a.numberInSurah) ? "❤️" : "🤍"}
+                    </button>
                   </div>
                   {i < tilawah.ayahs.length - 1 && <hr className="hr-dashed" />}
                 </div>

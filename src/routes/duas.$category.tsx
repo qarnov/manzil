@@ -73,6 +73,27 @@ function DuasCategory() {
                   {d.benefit}
                 </div>
               )}
+
+              <button
+                onClick={() =>
+                  window.open(
+                    "https://wa.me/?text=" +
+                      encodeURIComponent(
+                        d.arabic + "\n\n" + d.translation + "\n\n— " + d.reference + "\n\nShared via Manzil"
+                      ),
+                    "_blank"
+                  )
+                }
+                style={{
+                  marginTop: 12, width: "100%", minHeight: 44,
+                  background: "#25D366", color: "#fff",
+                  border: "none", borderRadius: 22,
+                  fontFamily: "var(--font-mono)", fontSize: 12, fontWeight: 600,
+                  display: "flex", alignItems: "center", justifyContent: "center", gap: 8,
+                }}
+              >
+                Share on WhatsApp
+              </button>
             </div>
           );
         })}
