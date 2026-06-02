@@ -175,11 +175,11 @@ function Qibla() {
           <div style={{ display: "flex", justifyContent: "center", margin: "20px 0" }}>
             <div
               style={{
-                width: 200,
-                height: 200,
+                width: 280,
+                height: 280,
                 borderRadius: "50%",
                 border: "3px solid var(--ink)",
-                background: "var(--card)",
+                background: "var(--page-bg)",
                 position: "relative",
                 display: "flex",
                 alignItems: "center",
@@ -188,51 +188,62 @@ function Qibla() {
             >
               {(["N", "E", "S", "W"] as const).map((d, i) => {
                 const positions = [
-                  { top: 6, left: "50%", transform: "translateX(-50%)" },
-                  { right: 8, top: "50%", transform: "translateY(-50%)" },
-                  { bottom: 6, left: "50%", transform: "translateX(-50%)" },
-                  { left: 8, top: "50%", transform: "translateY(-50%)" },
+                  { top: 10, left: "50%", transform: "translateX(-50%)" },
+                  { right: 12, top: "50%", transform: "translateY(-50%)" },
+                  { bottom: 10, left: "50%", transform: "translateX(-50%)" },
+                  { left: 12, top: "50%", transform: "translateY(-50%)" },
                 ];
                 return (
                   <div
                     key={d}
                     className="mono"
-                    style={{ position: "absolute", fontSize: 11, color: "var(--ink)", ...positions[i] }}
+                    style={{ position: "absolute", fontSize: 13, fontWeight: 600, color: "var(--ink)", ...positions[i] }}
                   >
                     {d}
                   </div>
                 );
               })}
+              {/* Gold Qibla needle */}
               <div
                 style={{
                   position: "absolute",
-                  width: 4,
-                  height: 140,
-                  top: 30,
+                  width: 6,
+                  height: 200,
+                  top: 40,
+                  borderRadius: 3,
+                  background: "var(--gold)",
                   transform: `rotate(${needleAngle}deg)`,
                   transition: "transform 0.3s ease",
-                  transformOrigin: "center 70px",
+                  transformOrigin: "center",
                 }}
-              >
-                <div style={{ width: "100%", height: "50%", background: "var(--ink)" }} />
-                <div style={{ width: "100%", height: "50%", background: "var(--border)" }} />
-              </div>
+              />
               <div
                 style={{
                   position: "absolute",
-                  fontSize: 18,
-                  transform: `rotate(${needleAngle}deg) translateY(-78px)`,
+                  fontSize: 22,
+                  transform: `rotate(${needleAngle}deg) translateY(-108px)`,
                   transition: "transform 0.3s ease",
                 }}
               >
                 🕋
               </div>
+              {/* Center hub */}
+              <div
+                style={{
+                  position: "absolute",
+                  width: 14,
+                  height: 14,
+                  borderRadius: "50%",
+                  background: "var(--ink)",
+                  border: "2px solid var(--gold)",
+                }}
+              />
             </div>
           </div>
 
           <div style={{ textAlign: "center", marginBottom: 20 }}>
-            <div style={{ fontFamily: "var(--font-arabic)", fontSize: 32, color: "var(--ink)" }}>
-              {Math.round(qiblaBearing)}°
+            <div style={{ fontSize: 26, fontWeight: 700, color: "var(--ink)" }}>
+              Qibla: {Math.round(qiblaBearing)}°
             </div>
             <div className="mono" style={{ fontSize: 9, color: "var(--muted)", marginTop: 4 }}>
               DIRECTION TO MAKKAH

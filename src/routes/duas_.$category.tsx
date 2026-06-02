@@ -22,11 +22,21 @@ function DuasCategory() {
   return (
     <>
       <TopBar title={`${cat.name} ${cat.emoji}`} back />
-      <div style={{ padding: "8px 18px 14px" }} className="mono">
+      <div style={{ padding: "8px 18px 6px" }} className="mono">
         <span style={{ fontSize: 9, color: "var(--muted)" }}>
           {cat.duas.length} DUAS
         </span>
       </div>
+      {cat.instruction && (
+        <div style={{
+          margin: "0 16px 14px", padding: "10px 12px",
+          background: "var(--card)", border: "1px dashed var(--border)",
+          borderRadius: 10, fontSize: 12, color: "var(--quote)", fontStyle: "italic",
+          fontFamily: "var(--font-body)", lineHeight: 1.4
+        }}>
+          {cat.instruction}
+        </div>
+      )}
 
       <div style={{ display: "flex", flexDirection: "column", gap: 12, padding: "0 16px" }}>
         {cat.duas.map((d, i) => {
@@ -40,10 +50,10 @@ function DuasCategory() {
               <span className="mono" style={{
                 position: "absolute", top: 10, right: 10,
                 fontSize: 10, color: "var(--card)", background: "var(--ink)",
-                padding: "2px 8px", borderRadius: 12, fontWeight: 600
-              }}>×{d.repetitions}</span>
+                padding: "3px 10px", borderRadius: 14, fontWeight: 600
+              }}>Recite {d.repetitions}×</span>
 
-              <div className="arabic" style={{ fontSize: 22, color: "var(--ink)", paddingRight: 44 }}>
+              <div className="arabic" style={{ fontSize: 22, color: "var(--ink)", paddingRight: 90, paddingTop: 6 }}>
                 {d.arabic}
               </div>
               <div style={{ fontFamily: "var(--font-body)", fontStyle: "italic", fontSize: 13, marginTop: 10, color: "var(--quote)", lineHeight: 1.5 }}>
@@ -61,7 +71,7 @@ function DuasCategory() {
                     padding: "4px 10px", borderRadius: 12,
                   }}
                 >
-                  {isOpen ? "Hide Benefit ▲" : "Benefit ▼"}
+                  {isOpen ? "Why this dua? ▲" : "Why this dua? ▼"}
                 </button>
               </div>
               {isOpen && (
@@ -79,7 +89,7 @@ function DuasCategory() {
                   window.open(
                     "https://wa.me/?text=" +
                       encodeURIComponent(
-                        d.arabic + "\n\n" + d.translation + "\n\n— " + d.reference + "\n\nShared via Manzil"
+                        d.arabic + "\n\n" + d.translation + "\n\n" + d.reference
                       ),
                     "_blank"
                   )
