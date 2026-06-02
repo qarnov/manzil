@@ -1,5 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useEffect, useRef, useState } from "react";
+import { Capacitor } from "@capacitor/core";
+import { Geolocation } from "@capacitor/geolocation";
 import { TopBar } from "../components/TopBar";
 
 export const Route = createFileRoute("/qibla")({ component: Qibla });
@@ -38,9 +40,34 @@ function Qibla() {
   const [needsCompassPermission, setNeedsCompassPermission] = useState(false);
   const listeningRef = useRef(false);
 
-  const requestLocation = () => {
+  const requestLocation = async () => {
     setLocLoading(true);
     setLocError(false);
+
+    // Native (APK): use the Capacitor plugin so Android shows the runtime
+    // permission prompt and resolves location reliably inside the WebView.
+    if (Capacitor.isNativePlatform()) {
+      try {
+        const perm = await Geolocation.requestPermissions();
+        if (perm.location === "denied" && perm.coarseLocation === "denied") {
+          setLocError(true);
+          setLocLoading(false);
+          return;
+        }
+        const pos = await Geolocation.getCurrentPosition({
+          enableHighAccuracy: true,
+          timeout: 10000,
+        });
+        setCoords({ lat: pos.coords.latitude, lng: pos.coords.longitude });
+        setLocLoading(false);
+      } catch {
+        setLocError(true);
+        setLocLoading(false);
+      }
+      return;
+    }
+
+    // Web fallback
     if (!navigator.geolocation) {
       setLocError(true);
       setLocLoading(false);
