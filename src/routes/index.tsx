@@ -1,12 +1,14 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { usePrayerTimes } from "../lib/prayerTimes";
+import { useMemo } from "react";
+import { nextPrayer } from "../lib/prayerTimes";
+import { useActivePrayers } from "../lib/masjids";
 
 export const Route = createFileRoute("/")({ component: Home });
 
-const ACTIVE_PRAYER = "Asr";
-
 function Home() {
-  const { prayers } = usePrayerTimes();
+  const { prayers, masjid } = useActivePrayers();
+  const next = useMemo(() => nextPrayer(prayers), [prayers]);
+
   return (
     <>
       <header className="topbar">
@@ -16,9 +18,47 @@ function Home() {
         </div>
         <div className="icons">
           <span>🔔</span>
-          <span>⚙️</span>
+          <Link to="/more" style={{ color: "var(--gold)" }}>⚙️</Link>
         </div>
       </header>
+
+      {/* Masjid selector — top of the home screen */}
+      <Link
+        to="/select-masjid"
+        style={{
+          display: "flex",
+          alignItems: "center",
+          gap: 12,
+          background: "var(--card-dark)",
+          borderBottom: "1px solid var(--border)",
+          padding: "12px 16px",
+          minHeight: 60,
+        }}
+      >
+        <span style={{ fontSize: 22 }}>🕌</span>
+        <div style={{ flex: 1, minWidth: 0 }}>
+          {masjid ? (
+            <>
+              <div style={{ fontSize: 14, fontWeight: 700, whiteSpace: "nowrap", overflow: "hidden", textOverflow: "ellipsis" }}>
+                {masjid.name}
+              </div>
+              <div className="mono" style={{ fontSize: 9, color: "var(--muted)", marginTop: 2 }}>
+                {masjid.area.toUpperCase()}, {masjid.state.toUpperCase()}
+              </div>
+            </>
+          ) : (
+            <>
+              <div style={{ fontSize: 14, fontWeight: 700 }}>Select your masjid</div>
+              <div className="mono" style={{ fontSize: 9, color: "var(--muted)", marginTop: 2 }}>
+                TAP TO LOAD AZAAN &amp; IQAMAH TIMES
+              </div>
+            </>
+          )}
+        </div>
+        <span className="mono" style={{ fontSize: 11, color: "var(--gold)", border: "1px solid var(--gold)", padding: "6px 12px", borderRadius: 20, whiteSpace: "nowrap" }}>
+          {masjid ? "Change" : "Choose"} ›
+        </span>
+      </Link>
 
       <div style={{ height: 16 }} />
 
@@ -58,16 +98,18 @@ function Home() {
         );
       })()}
 
-      {/* Next prayer strip */}
-      <div style={{
-        margin: "16px", height: 52, background: "var(--ink)", color: "var(--card)",
-        borderRadius: 8, display: "flex", alignItems: "center", justifyContent: "space-between",
-        padding: "0 18px"
-      }}>
-        <span style={{ fontFamily: "var(--font-arabic)", fontSize: 16 }}>Asr</span>
-        <span className="mono" style={{ fontSize: 13 }}>4:32 PM</span>
-        <span className="mono" style={{ fontSize: 11, color: "var(--gold)" }}>in 1h 24m</span>
-      </div>
+      {/* Next prayer strip — computed from the device clock */}
+      {next && (
+        <div style={{
+          margin: "16px", height: 52, background: "var(--ink)", color: "var(--card)",
+          borderRadius: 8, display: "flex", alignItems: "center", justifyContent: "space-between",
+          padding: "0 18px"
+        }}>
+          <span style={{ fontFamily: "var(--font-arabic)", fontSize: 16 }}>{next.name}</span>
+          <span className="mono" style={{ fontSize: 13 }}>{next.azaan}</span>
+          <span className="mono" style={{ fontSize: 11, color: "var(--gold)" }}>{next.inLabel}</span>
+        </div>
+      )}
 
       <div className="label-mono" style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
         <span>TODAY'S PRAYERS</span>
@@ -84,7 +126,7 @@ function Home() {
           <span style={{ fontSize: 9, color: "var(--gold)", width: 80, textAlign: "right" }}>IQAMAH</span>
         </div>
         {prayers.map((p, i) => {
-          const active = p.name === ACTIVE_PRAYER;
+          const active = p.name === next?.name;
           return (
             <div key={p.name} style={{
               display: "grid", gridTemplateColumns: "1fr auto auto",

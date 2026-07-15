@@ -12,8 +12,8 @@ const tools = [
   { to: "/hijri", icon: "🌙", name: "Hijri Calendar", sub: "ISLAMIC DATES" },
 ];
 const community = [
-  { icon: "🕌", name: "Local Masjids", sub: "FIND NEARBY" },
-  { icon: "❤️", name: "Donate", sub: "SUPPORT THE COMMUNITY" },
+  { to: "/masjids", icon: "🕌", name: "Local Masjids", sub: "FIND & REGISTER NEARBY" },
+  { to: "/donate", icon: "❤️", name: "Donate", sub: "SADAQAH JARIYAH" },
 ];
 
 function Row({ icon, name, sub, to, onClick }: any) {
@@ -73,6 +73,11 @@ function More() {
 
       <div className="label-mono">COMMUNITY</div>
       <Group items={community} />
+
+      <div className="label-mono">MASJID ADMIN</div>
+      <Group items={[
+        { to: "/muazzin", icon: "🕌", name: "Muazzin Mode", sub: "UPDATE AZAAN & IQAMAH" },
+      ]} />
 
       <div className="label-mono">APP</div>
       <Group items={[

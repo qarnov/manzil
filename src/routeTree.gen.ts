@@ -11,14 +11,18 @@
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as ZakatRouteImport } from './routes/zakat'
 import { Route as TasbihRouteImport } from './routes/tasbih'
+import { Route as SelectMasjidRouteImport } from './routes/select-masjid'
 import { Route as QuranRouteImport } from './routes/quran'
 import { Route as QiblaRouteImport } from './routes/qibla'
 import { Route as PrayerSettingsRouteImport } from './routes/prayer-settings'
 import { Route as PrayerRouteImport } from './routes/prayer'
 import { Route as OnboardingRouteImport } from './routes/onboarding'
+import { Route as MuazzinRouteImport } from './routes/muazzin'
 import { Route as MoreRouteImport } from './routes/more'
+import { Route as MasjidsRouteImport } from './routes/masjids'
 import { Route as HijriRouteImport } from './routes/hijri'
 import { Route as DuasRouteImport } from './routes/duas'
+import { Route as DonateRouteImport } from './routes/donate'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as QuranSurahNumberRouteImport } from './routes/quran_.$surahNumber'
 import { Route as DuasCategoryRouteImport } from './routes/duas_.$category'
@@ -31,6 +35,11 @@ const ZakatRoute = ZakatRouteImport.update({
 const TasbihRoute = TasbihRouteImport.update({
   id: '/tasbih',
   path: '/tasbih',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const SelectMasjidRoute = SelectMasjidRouteImport.update({
+  id: '/select-masjid',
+  path: '/select-masjid',
   getParentRoute: () => rootRouteImport,
 } as any)
 const QuranRoute = QuranRouteImport.update({
@@ -58,9 +67,19 @@ const OnboardingRoute = OnboardingRouteImport.update({
   path: '/onboarding',
   getParentRoute: () => rootRouteImport,
 } as any)
+const MuazzinRoute = MuazzinRouteImport.update({
+  id: '/muazzin',
+  path: '/muazzin',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const MoreRoute = MoreRouteImport.update({
   id: '/more',
   path: '/more',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const MasjidsRoute = MasjidsRouteImport.update({
+  id: '/masjids',
+  path: '/masjids',
   getParentRoute: () => rootRouteImport,
 } as any)
 const HijriRoute = HijriRouteImport.update({
@@ -71,6 +90,11 @@ const HijriRoute = HijriRouteImport.update({
 const DuasRoute = DuasRouteImport.update({
   id: '/duas',
   path: '/duas',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const DonateRoute = DonateRouteImport.update({
+  id: '/donate',
+  path: '/donate',
   getParentRoute: () => rootRouteImport,
 } as any)
 const IndexRoute = IndexRouteImport.update({
@@ -91,14 +115,18 @@ const DuasCategoryRoute = DuasCategoryRouteImport.update({
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/donate': typeof DonateRoute
   '/duas': typeof DuasRoute
   '/hijri': typeof HijriRoute
+  '/masjids': typeof MasjidsRoute
   '/more': typeof MoreRoute
+  '/muazzin': typeof MuazzinRoute
   '/onboarding': typeof OnboardingRoute
   '/prayer': typeof PrayerRoute
   '/prayer-settings': typeof PrayerSettingsRoute
   '/qibla': typeof QiblaRoute
   '/quran': typeof QuranRoute
+  '/select-masjid': typeof SelectMasjidRoute
   '/tasbih': typeof TasbihRoute
   '/zakat': typeof ZakatRoute
   '/duas/$category': typeof DuasCategoryRoute
@@ -106,14 +134,18 @@ export interface FileRoutesByFullPath {
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/donate': typeof DonateRoute
   '/duas': typeof DuasRoute
   '/hijri': typeof HijriRoute
+  '/masjids': typeof MasjidsRoute
   '/more': typeof MoreRoute
+  '/muazzin': typeof MuazzinRoute
   '/onboarding': typeof OnboardingRoute
   '/prayer': typeof PrayerRoute
   '/prayer-settings': typeof PrayerSettingsRoute
   '/qibla': typeof QiblaRoute
   '/quran': typeof QuranRoute
+  '/select-masjid': typeof SelectMasjidRoute
   '/tasbih': typeof TasbihRoute
   '/zakat': typeof ZakatRoute
   '/duas/$category': typeof DuasCategoryRoute
@@ -122,14 +154,18 @@ export interface FileRoutesByTo {
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/donate': typeof DonateRoute
   '/duas': typeof DuasRoute
   '/hijri': typeof HijriRoute
+  '/masjids': typeof MasjidsRoute
   '/more': typeof MoreRoute
+  '/muazzin': typeof MuazzinRoute
   '/onboarding': typeof OnboardingRoute
   '/prayer': typeof PrayerRoute
   '/prayer-settings': typeof PrayerSettingsRoute
   '/qibla': typeof QiblaRoute
   '/quran': typeof QuranRoute
+  '/select-masjid': typeof SelectMasjidRoute
   '/tasbih': typeof TasbihRoute
   '/zakat': typeof ZakatRoute
   '/duas_/$category': typeof DuasCategoryRoute
@@ -139,14 +175,18 @@ export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths:
     | '/'
+    | '/donate'
     | '/duas'
     | '/hijri'
+    | '/masjids'
     | '/more'
+    | '/muazzin'
     | '/onboarding'
     | '/prayer'
     | '/prayer-settings'
     | '/qibla'
     | '/quran'
+    | '/select-masjid'
     | '/tasbih'
     | '/zakat'
     | '/duas/$category'
@@ -154,14 +194,18 @@ export interface FileRouteTypes {
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
+    | '/donate'
     | '/duas'
     | '/hijri'
+    | '/masjids'
     | '/more'
+    | '/muazzin'
     | '/onboarding'
     | '/prayer'
     | '/prayer-settings'
     | '/qibla'
     | '/quran'
+    | '/select-masjid'
     | '/tasbih'
     | '/zakat'
     | '/duas/$category'
@@ -169,14 +213,18 @@ export interface FileRouteTypes {
   id:
     | '__root__'
     | '/'
+    | '/donate'
     | '/duas'
     | '/hijri'
+    | '/masjids'
     | '/more'
+    | '/muazzin'
     | '/onboarding'
     | '/prayer'
     | '/prayer-settings'
     | '/qibla'
     | '/quran'
+    | '/select-masjid'
     | '/tasbih'
     | '/zakat'
     | '/duas_/$category'
@@ -185,14 +233,18 @@ export interface FileRouteTypes {
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  DonateRoute: typeof DonateRoute
   DuasRoute: typeof DuasRoute
   HijriRoute: typeof HijriRoute
+  MasjidsRoute: typeof MasjidsRoute
   MoreRoute: typeof MoreRoute
+  MuazzinRoute: typeof MuazzinRoute
   OnboardingRoute: typeof OnboardingRoute
   PrayerRoute: typeof PrayerRoute
   PrayerSettingsRoute: typeof PrayerSettingsRoute
   QiblaRoute: typeof QiblaRoute
   QuranRoute: typeof QuranRoute
+  SelectMasjidRoute: typeof SelectMasjidRoute
   TasbihRoute: typeof TasbihRoute
   ZakatRoute: typeof ZakatRoute
   DuasCategoryRoute: typeof DuasCategoryRoute
@@ -213,6 +265,13 @@ declare module '@tanstack/react-router' {
       path: '/tasbih'
       fullPath: '/tasbih'
       preLoaderRoute: typeof TasbihRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/select-masjid': {
+      id: '/select-masjid'
+      path: '/select-masjid'
+      fullPath: '/select-masjid'
+      preLoaderRoute: typeof SelectMasjidRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/quran': {
@@ -250,11 +309,25 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof OnboardingRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/muazzin': {
+      id: '/muazzin'
+      path: '/muazzin'
+      fullPath: '/muazzin'
+      preLoaderRoute: typeof MuazzinRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/more': {
       id: '/more'
       path: '/more'
       fullPath: '/more'
       preLoaderRoute: typeof MoreRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/masjids': {
+      id: '/masjids'
+      path: '/masjids'
+      fullPath: '/masjids'
+      preLoaderRoute: typeof MasjidsRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/hijri': {
@@ -269,6 +342,13 @@ declare module '@tanstack/react-router' {
       path: '/duas'
       fullPath: '/duas'
       preLoaderRoute: typeof DuasRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/donate': {
+      id: '/donate'
+      path: '/donate'
+      fullPath: '/donate'
+      preLoaderRoute: typeof DonateRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/': {
@@ -297,14 +377,18 @@ declare module '@tanstack/react-router' {
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  DonateRoute: DonateRoute,
   DuasRoute: DuasRoute,
   HijriRoute: HijriRoute,
+  MasjidsRoute: MasjidsRoute,
   MoreRoute: MoreRoute,
+  MuazzinRoute: MuazzinRoute,
   OnboardingRoute: OnboardingRoute,
   PrayerRoute: PrayerRoute,
   PrayerSettingsRoute: PrayerSettingsRoute,
   QiblaRoute: QiblaRoute,
   QuranRoute: QuranRoute,
+  SelectMasjidRoute: SelectMasjidRoute,
   TasbihRoute: TasbihRoute,
   ZakatRoute: ZakatRoute,
   DuasCategoryRoute: DuasCategoryRoute,
