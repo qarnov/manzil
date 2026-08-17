@@ -1,0 +1,52 @@
+{
+  "masjids": [
+    {
+      "id": "al_munawwar_kallapu",
+      "name": "Masjid Al Munawwar",
+      "area": "Kallapu",
+      "state": "Karnataka",
+      "lat": 12.8626,
+      "lng": 74.8846,
+      "times": {
+        "Fajr": { "azaan": "5:04 AM", "iqamah": "5:20 AM" },
+        "Dhuhr": { "azaan": "12:31 PM", "iqamah": "12:45 PM" },
+        "Asr": { "azaan": "4:32 PM", "iqamah": "4:45 PM" },
+        "Maghrib": { "azaan": "6:47 PM", "iqamah": "6:52 PM" },
+        "Isha": { "azaan": "8:01 PM", "iqamah": "8:15 PM" }
+      },
+      "updatedAt": "2026-07-14"
+    },
+    {
+      "id": "jamia_masjid_bunder",
+      "name": "Jamia Masjid",
+      "area": "Bunder, Mangaluru",
+      "state": "Karnataka",
+      "lat": 12.8698,
+      "lng": 74.8371,
+      "times": {
+        "Fajr": { "azaan": "5:02 AM", "iqamah": "5:20 AM" },
+        "Dhuhr": { "azaan": "12:30 PM", "iqamah": "12:45 PM" },
+        "Asr": { "azaan": "4:30 PM", "iqamah": "4:45 PM" },
+        "Maghrib": { "azaan": "6:46 PM", "iqamah": "6:51 PM" },
+        "Isha": { "azaan": "8:00 PM", "iqamah": "8:15 PM" }
+      },
+      "updatedAt": "2026-07-14"
+    },
+    {
+      "id": "masjid_e_zeenath_ullal",
+      "name": "Masjid-e-Zeenath Baksh",
+      "area": "Ullal",
+      "state": "Karnataka",
+      "lat": 12.8065,
+      "lng": 74.8586,
+      "times": {
+        "Fajr": { "azaan": "5:05 AM", "iqamah": "5:25 AM" },
+        "Dhuhr": { "azaan": "12:32 PM", "iqamah": "12:50 PM" },
+        "Asr": { "azaan": "4:33 PM", "iqamah": "4:50 PM" },
+        "Maghrib": { "azaan": "6:47 PM", "iqamah": "6:52 PM" },
+        "Isha": { "azaan": "8:02 PM", "iqamah": "8:20 PM" }
+      },
+      "updatedAt": "2026-07-14"
+    }
+  ]
+}

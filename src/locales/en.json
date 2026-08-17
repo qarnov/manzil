@@ -1,0 +1,37 @@
+{
+  "onboarding": {
+    "tagline": "Your peaceful home",
+    "chooseLanguage": "Choose your language",
+    "continue": "Continue",
+    "locationTitle": "Find masjids near you",
+    "locationBody": "Allow location so Manzil can show masjids in your area and load their azaan and iqamah times. Your location stays on your device.",
+    "allowLocation": "Allow location",
+    "gettingLocation": "Getting your location…",
+    "skip": "Skip for now"
+  },
+  "tabs": {
+    "home": "Home",
+    "quran": "Quran",
+    "duas": "Duas",
+    "qibla": "Qibla",
+    "more": "More"
+  },
+  "home": {
+    "greeting": "Assalamu alaikum",
+    "chooseMasjid": "Choose your masjid",
+    "chooseMasjidHint": "To load azaan and iqamah times",
+    "ayahOfTheDay": "Ayah of the day",
+    "readTafsir": "Read tafsir",
+    "next": "Next",
+    "todaysPrayers": "Today's prayers",
+    "edit": "Edit"
+  },
+  "common": {
+    "tryAgain": "Try again",
+    "loading": "Loading…",
+    "save": "Save",
+    "saved": "Saved",
+    "cancel": "Cancel",
+    "reset": "Reset"
+  }
+}
