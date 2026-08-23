@@ -2,8 +2,10 @@
 
 ## App name (30 char limit)
 
-Manzil                                          (6)
-Manzil: Prayer Times & Quran                    (28)
+Manzil - For the Community                      (26)
+
+Launcher name stays "Manzil" (app.json) — short reads better under an icon.
+The Play listing title is a separate field and need not match it.
 
 ## Short description (80 char limit)
 
