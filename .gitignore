@@ -43,3 +43,8 @@ yarn-error.*
 # build artefacts
 *.apk
 *.aab
+
+# local tooling
+.claude/
+CLAUDE.md
+AGENTS.md
